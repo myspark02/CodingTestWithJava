@@ -26,7 +26,112 @@ public class Main {
         //kthNumber();
         //twoThoundsSixteen();
         //ternaryFlipFlop();
-        pickOutMiddle();
+        //pickOutMiddle();
+        // filterElementsDividedBySpecifiedNumber();
+        sumBetweenTwoNumbers();
+    }
+
+    private static void sumBetweenTwoNumbers() {
+        /*
+            두 정수 사이의 합
+            문제 설명
+            두 정수 a, b가 주어졌을 때 a와 b 사이에 속한 모든 정수의 합을 리턴하는 함수, solution을 완성하세요.
+            예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴합니다.
+
+            제한 조건
+            a와 b가 같은 경우는 둘 중 아무 수나 리턴하세요.
+            a와 b는 -10,000,000 이상 10,000,000 이하인 정수입니다.
+            a와 b의 대소관계는 정해져있지 않습니다.
+            입출력 예
+            a	b	return
+            3	5	12
+            3	3	3
+            5	3	12
+        */
+
+
+        int start = 3;
+        int end = 5;
+
+        start = 3;
+        end = 3;
+
+        start = 5;
+        end = 3;
+
+        if (start > end) {
+            int tmp = start;
+            start = end;
+            end = tmp;
+        }
+
+        int sum = 0;
+        for (int i = start; i <=end; i++) {
+            sum += i;
+
+        }
+
+        System.out.println(sum);
+    }
+
+    private static void filterElementsDividedBySpecifiedNumber() {
+        /*
+            나누어 떨어지는 숫자 배열
+            문제 설명
+            array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.
+            divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
+
+            제한사항
+            arr은 자연수를 담은 배열입니다.
+            정수 i, j에 대해 i ≠ j 이면 arr[i] ≠ arr[j] 입니다.
+            divisor는 자연수입니다.
+            array는 길이 1 이상인 배열입니다.
+            입출력 예
+            arr	divisor	return
+            [5, 9, 7, 10]	5	[5, 10]
+            [2, 36, 1, 3]	1	[1, 2, 3, 36]
+            [3,2,6]	10	[-1]
+            입출력 예 설명
+            입출력 예#1
+            arr의 원소 중 5로 나누어 떨어지는 원소는 5와 10입니다. 따라서 [5, 10]을 리턴합니다.
+
+            입출력 예#2
+            arr의 모든 원소는 1으로 나누어 떨어집니다. 원소를 오름차순으로 정렬해 [1, 2, 3, 36]을 리턴합니다.
+
+        */
+
+
+        int[] arr = {5, 9, 7, 10};
+        int divisor = 5;
+
+        // int[] arr = {2, 36, 1, 3};
+        // int divisor = 1;
+
+        // int[] arr = {3, 2, 6};
+        // int divisor = 10;
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor == 0) {
+                result.add(arr[i]);
+            }
+        }
+
+        if (result.size() == 0) {
+            result.add(-1);
+        }
+
+        Integer[] resultArr = result.toArray(new Integer[result.size()]);
+
+        Arrays.sort(resultArr);
+        
+        
+        System.out.println(Arrays.toString(resultArr));
+        
+
+
+
     }
     
     private static void pickOutMiddle() {
