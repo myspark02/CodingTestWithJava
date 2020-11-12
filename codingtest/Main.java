@@ -28,7 +28,81 @@ public class Main {
         //ternaryFlipFlop();
         //pickOutMiddle();
         // filterElementsDividedBySpecifiedNumber();
-        sumBetweenTwoNumbers();
+        // sumBetweenTwoNumbers();
+        sumOfEveryTwoCombination();
+    }
+
+    private static void sumOfEveryTwoCombination() {
+        /*
+            두 개 뽑아서 더하기
+            문제 설명
+            정수 배열 numbers가 주어집니다. numbers에서 서로 다른 인덱스에 있는 두 개의 수를 뽑아 더해서 만들 수 있는 모든 수를 배열에 오름차순으로 담아 return 하도록 solution 함수를 완성해주세요.
+
+            제한사항
+            numbers의 길이는 2 이상 100 이하입니다.
+            numbers의 모든 수는 0 이상 100 이하입니다.
+            입출력 예
+            numbers	result
+            [2,1,3,4,1]	[2,3,4,5,6,7]
+            [5,0,2,7]	[2,5,7,9,12]
+            입출력 예 설명
+            입출력 예 #1
+
+            2 = 1 + 1 입니다. (1이 numbers에 두 개 있습니다.)
+            3 = 2 + 1 입니다.
+            4 = 1 + 3 입니다.
+            5 = 1 + 4 = 2 + 3 입니다.
+            6 = 2 + 4 입니다.
+            7 = 3 + 4 입니다.
+            따라서 [2,3,4,5,6,7] 을 return 해야 합니다.
+
+        */
+        
+        // int[] numbers = {2, 1, 3, 4, 1};
+        int[] numbers = {5, 0, 2, 7};
+
+
+        // n개에서 2개 뽑을 수 있는 경우의 수만큼의 크기로 일단 배열 생성 
+        int[] result = new int[numbers.length*(numbers.length-1)/2]; 
+        // -1로 초기화
+        for (int i = 0; i < result.length;i++) 
+            result[i] = -1;
+        
+        int idx = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
+                if (i != j) {
+                    if (exists(result, numbers[i]+numbers[j]) == false) // 이미 값이 있으면 넣지 않기.
+                        result[idx++] = numbers[i] + numbers[j];        
+                }    
+            }
+        }
+
+        // 결과 배열의 크기를 계산. -1 앞까지의 원소 수 
+        int size = 0;
+        while(size < result.length && result[size] != -1)  size++;
+
+        // 최종 결과를 저장할 배열 생성하고, 배열 result에서 -1인 원소 앞까지 최종 결과 배열에 저장 
+        int[] finalResult = new int[size];
+        for (int i = 0; i < size; i++) {
+            finalResult[i] = result[i];
+        }
+
+        // 배열 정렬
+        Arrays.sort(finalResult);
+
+        System.out.println("\n"+Arrays.toString(finalResult));
+
+    }
+
+    private static boolean exists(int[] arr, int val) {
+        boolean result = false;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == val) 
+                return true;
+        }
+
+        return result;
     }
 
     private static void sumBetweenTwoNumbers() {
