@@ -30,7 +30,259 @@ public class Main {
         // filterElementsDividedBySpecifiedNumber();
         // sumBetweenTwoNumbers();
         // sumOfEveryTwoCombination();
-        sortStringBasedOnNthChar();
+        // sortStringBasedOnNthChar();
+        // compareNumberOfPandY();
+        // sortCharDesc();
+        // checkLengthNumber();
+        // findMrKim();    
+        // findPrimeNumberCount();
+        // makeSuBakString();
+        str2num();
+    }
+
+    private static void str2num() {
+        /*
+        문자열을 정수로 바꾸기
+        문제 설명
+        문자열 s를 숫자로 변환한 결과를 반환하는 함수, solution을 완성하세요.
+
+        제한 조건
+        s의 길이는 1 이상 5이하입니다.
+        s의 맨앞에는 부호(+, -)가 올 수 있습니다.
+        s는 부호와 숫자로만 이루어져있습니다.
+        s는 0으로 시작하지 않습니다.
+        입출력 예
+        예를들어 str이 1234이면 1234를 반환하고, -1234이면 -1234를 반환하면 됩니다.
+        str은 부호(+,-)와 숫자로만 구성되어 있고, 잘못된 값이 입력되는 경우는 없습니다.
+        */
+        // String s = "1234";
+        // String s = "-1234";
+        String s = "+1234";
+        
+        char[] carr = s.toCharArray();
+        int positionValue = 1;
+
+        int buho = 1;
+        int result = 0;
+        for (int i = carr.length-1; i >= 0; i--) {
+            if (carr[i] == '-') buho = -1;
+            else if (carr[i] == '+') buho = 1;
+            else {
+                int intVal = (carr[i] - '0')*positionValue;
+                result += intVal;
+                positionValue *= 10;
+            }    
+        }
+        result *= buho;
+        System.out.println(result);
+
+    }
+
+    private static void makeSuBakString() {
+        /*
+            수박수박수박수박수박수?
+            문제 설명
+            길이가 n이고, 수박수박수박수....와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. 
+            예를들어 n이 4이면 수박수박을 리턴하고 3이라면 수박수를 리턴하면 됩니다.
+
+            제한 조건
+            n은 길이 10,000이하인 자연수입니다.
+            입출력 예
+            n	return
+            3	수박수
+            4	수박수박
+        */
+        // int n = 3;
+        int n = 4;
+
+        String result = "";
+        String subak = "수";
+
+        for (int i = 0; i < n ; i++) {
+            result += subak;
+            if (subak.equals("수")) subak = "박";
+            else subak = "수"; 
+        }
+
+        System.out.println(result);
+    }
+
+    private static void findPrimeNumberCount() {
+        /*
+            소수 찾기
+            문제 설명
+            1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.
+
+            소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.
+            (1은 소수가 아닙니다.)
+
+            제한 조건
+            n은 2이상 1000000이하의 자연수입니다.
+            입출력 예
+            n	result
+            10	4
+            5	3
+            입출력 예 설명
+            입출력 예 #1
+            1부터 10 사이의 소수는 [2,3,5,7] 4개가 존재하므로 4를 반환
+
+            입출력 예 #2
+            1부터 5 사이의 소수는 [2,3,5] 3개가 존재하므로 3를 반환
+        */
+
+        // int n = 10;
+        int n = 5; 
+
+        int cnt = 0;
+        boolean isPrime = true;
+        for (int i = 2; i <=n; i++) {
+                isPrime = true;
+                for (int j=2; j <= (i/2); j++) {
+                    if (i % j == 0) isPrime = false;
+                } 
+                if (isPrime==true) cnt++;
+        }
+
+        System.out.println(cnt);
+
+
+    }
+
+    private static void findMrKim() {
+        /*
+            서울에서 김서방 찾기
+            문제 설명
+            String형 배열 seoul의 element중 Kim의 위치 x를 찾아, 김서방은 x에 있다는 String을 반환하는 함수, solution을 완성하세요. 
+            seoul에 Kim은 오직 한 번만 나타나며 잘못된 값이 입력되는 경우는 없습니다.
+
+            제한 사항
+            seoul은 길이 1 이상, 1000 이하인 배열입니다.
+            seoul의 원소는 길이 1 이상, 20 이하인 문자열입니다.
+            Kim은 반드시 seoul 안에 포함되어 있습니다.
+            입출력 예
+            seoul	return
+            [Jane, Kim]	김서방은 1에 있다
+        */
+        String[] seoul = {"Jane", "Kim"};
+        int i = 0;
+        for (; i < seoul.length; i++) {
+            if(seoul[i].equals("Kim")) {
+                break;
+            }
+        }
+
+        System.out.println("김서방은 " + i + "에 있다.");
+
+    }
+
+    private static void checkLengthNumber() {
+        /*
+        문자열 다루기 기본
+        문제 설명
+        문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요. 예를 들어 s가 a234이면 False를 리턴하고 1234라면 True를 리턴하면 됩니다.
+
+        제한 사항
+        s는 길이 1 이상, 길이 8 이하인 문자열입니다.
+        입출력 예
+        s	return
+        a234	false
+        1234	true
+        */
+
+        // String s = "a234";
+        String s = "1234";
+        if (s.length() != 4 && s.length()!=6)  {
+            System.out.println(false);
+            return;
+        }
+        
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c < '1' || c > '9') {
+                System.out.println(false);
+                return;
+            }
+        }
+        System.out.println(true);
+
+            
+    }
+
+    private static void sortCharDesc() {
+        /*
+            문자열 내림차순으로 배치하기
+            문제 설명
+            문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
+            s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+
+            제한 사항
+            str은 길이 1 이상인 문자열입니다.
+            입출력 예
+            s	return
+            Zbcdefg	gfedcbZ
+        */
+        String str = "Zbcdefg";
+
+        char[] carr = str.toCharArray();
+        // selection sort
+         for (int i = 0; i < carr.length-1; i++) {
+             int maxIdx = i;
+             for (int j = i+1; j < carr.length; j++) {
+                if (carr[j] > carr[maxIdx]) {
+                    maxIdx = j;
+                }
+             }
+             char tmp = carr[i];
+             carr[i] = carr[maxIdx];
+             carr[maxIdx] = tmp;
+         }
+
+         String result = new String(carr);
+         System.out.println(result);
+    }
+
+    private static void compareNumberOfPandY() {
+        /*
+        문자열 내 p와 y의 개수
+        문제 설명
+        대문자와 소문자가 섞여있는 문자열 s가 주어집니다. s에 'p'의 개수와 'y'의 개수를 비교해 같으면 True, 다르면 False를 return 하는 solution를 완성하세요. 
+        'p', 'y' 모두 하나도 없는 경우는 항상 True를 리턴합니다. 단, 개수를 비교할 때 대문자와 소문자는 구별하지 않습니다.
+
+        예를 들어 s가 pPoooyY면 true를 return하고 Pyy라면 false를 return합니다.
+
+        제한사항
+        문자열 s의 길이 : 50 이하의 자연수
+        문자열 s는 알파벳으로만 이루어져 있습니다.
+        입출력 예
+        s	answer
+        pPoooyY	true
+        Pyy	false
+        입출력 예 설명
+        입출력 예 #1
+        'p'의 개수 2개, 'y'의 개수 2개로 같으므로 true를 return 합니다.
+
+        입출력 예 #2
+        'p'의 개수 1개, 'y'의 개수 2개로 다르므로 false를 return 합니다.
+
+        */
+        // String s = "pPoooyY";
+        String s = "Pyy";
+
+        int cntP = 0;
+        int cntY = 0;
+
+        String s2 = s.toLowerCase();
+        for (int i = 0; i < s2.length(); i++) {
+            if (s2.charAt(i) == 'p') {
+                cntP++;
+            } else if (s2.charAt(i) == 'y') {
+                cntY++;
+            }
+        }
+
+        System.out.println(cntP == cntY);
+
+
     }
 
     private static void sortStringBasedOnNthChar() {
@@ -494,7 +746,7 @@ public class Main {
             n - # of lost + # of possible borrows
             
             # of possible borrows : lost[i] - 1 or lost[i] + 1 is in reserve, if borrow then mark it as borrowed by assiging -1 
-            to borrows[k] where k is index of borrows holding the borrower
+    s.toLowerCase(); borrows[k] where k is index of borrows holding the borrower
         */
         
         int n = 3;
