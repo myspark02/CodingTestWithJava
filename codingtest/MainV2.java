@@ -1,5 +1,7 @@
 package codingtest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainV2 {
@@ -7,7 +9,184 @@ public class MainV2 {
         // caesarCipher();
         // arrayMultiply();
         // sumOfNsDivisor();
-        makeWeirdString();
+        // makeWeirdString();
+        // sumEachDigit();
+        // makeArrayFromReversedDigitsOfInteger();
+        // sortDigitsInDescendingOrder();
+        ifSquareofNthenCalSquareOfNplusOne();
+    }
+
+    private static void ifSquareofNthenCalSquareOfNplusOne() {
+        /*
+            정수 제곱근 판별
+            문제 설명
+            임의의 양의 정수 n에 대해, n이 어떤 양의 정수 x의 제곱인지 아닌지 판단하려 합니다.
+            n이 양의 정수 x의 제곱이라면 x+1의 제곱을 리턴하고, n이 양의 정수 x의 제곱이 아니라면 -1을 리턴하는 함수를 완성하세요.
+
+            제한 사항
+            n은 1이상, 50000000000000 이하인 양의 정수입니다.
+            입출력 예
+            n	return
+            121	144
+            3	-1
+            입출력 예 설명
+            입출력 예#1
+            121은 양의 정수 11의 제곱이므로, (11+1)를 제곱한 144를 리턴합니다.
+
+            입출력 예#2
+            3은 양의 정수의 제곱이 아니므로, -1을 리턴합니다.
+        */
+
+        int n = 121;
+        n =3;
+        n = 225;
+        int square = 1;
+
+        while (square*square < n) {
+            square++;
+        }
+        if(square*square == n) {
+            System.out.println((square+1)*(square+1));
+        } else {
+            System.out.println(-1);
+        }
+    }
+
+    private static void sortDigitsInDescendingOrder() {
+        /*
+            정수 내림차순으로 배치하기
+            문제 설명
+            함수 solution은 정수 n을 매개변수로 입력받습니다. 
+            n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요. 
+            예를들어 n이 118372면 873211을 리턴하면 됩니다.
+
+            제한 조건
+            n은 1이상 8000000000 이하인 자연수입니다.
+            입출력 예
+            n	return
+            118372
+        */
+
+        // 1의 자리부터 가장 큰 자리까지의 수를 정수 배열에 넣는다.
+
+        int n = 118372;
+        int size = 0;
+
+        int tmp = n;
+        // digit의 갯수 계산
+        while(tmp > 0) {
+            tmp = tmp/10;
+            size++;
+        }
+        int[] result = new int[size];
+
+        // 1의 자리부터 가장 큰 자리까지의 숫자를 추출해서 배열에 저장한다. 
+        int idx = 0;
+        while(n > 0) {
+            int digit = n % 10;
+            result[idx++] = digit;
+            n = n/10;
+        }
+
+        // result 배열에 저장된 수를 오름차순으로 정렬한다. 
+        // 만만한 선택정렬 사용.
+
+        for (int i = 0; i < result.length; i++) {
+            int minIdx = i; 
+            for (int j = i; j < result.length; j++) {
+                if (result[minIdx] > result[j]) {
+                    minIdx = j;
+                }
+            }
+            int tmpValue = result[i];
+            result[i] = result[minIdx];
+            result[minIdx] = tmpValue;
+        }
+
+        // 내림차순으로 정렬된 숫자에 자리수 값을 곱해서 더한다. 
+        // 첫 번째 원소가 1의 자리, 두 번째 원소가 10의 자리 ...
+        int resultValue = 0;
+        int positionValue = 1;
+        for (int i = 0; i < result.length; i++) {
+            resultValue +=  (result[i]*positionValue);
+            positionValue *= 10; // 자리 수 값은 10배씩 커진다. 
+        }
+
+        System.out.println(resultValue);
+
+
+    }
+    private static void makeArrayFromReversedDigitsOfInteger() {
+        /*
+            자연수 뒤집어 배열로 만들기
+            문제 설명
+            자연수 n을 뒤집어 각 자리 숫자를 원소로 가지는 배열 형태로 리턴해주세요. 예를들어 n이 12345이면 [5,4,3,2,1]을 리턴합니다.
+
+            제한 조건
+            n은 10,000,000,000이하인 자연수입니다.
+            입출력 예
+            n	return
+            12345	[5,4,3,2,1]
+        */
+
+        int n = 12345;
+        /*
+            n이 0보다 큰동안 다음을 반복하면 1의 자리부터 가장 큰 자리까지의 숫자를 추출할 수 있다. 
+                int digit = n % 10;
+                digit를 ArrayList에 추가.
+                n = n/10;
+
+        */
+        ArrayList<Integer> list = new ArrayList<>();
+        while(n > 0) {
+            int digit = n % 10;
+            list.add(digit);
+            n = n/10;
+        }
+
+        Integer[] result = list.toArray(new Integer[list.size()]);
+        System.out.println(Arrays.toString(result));
+
+    }
+
+    private static void sumEachDigit() {
+        /*
+            자릿수 더하기
+            문제 설명
+            자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는 solution 함수를 만들어 주세요.
+            예를들어 N = 123이면 1 + 2 + 3 = 6을 return 하면 됩니다.
+
+            제한사항
+            N의 범위 : 100,000,000 이하의 자연수
+            입출력 예
+            N	answer
+            123	6
+            987	24
+            입출력 예 설명
+            입출력 예 #1
+            문제의 예시와 같습니다.
+
+            입출력 예 #2
+            9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
+        */
+
+        int n = 123;
+        n = 987;
+
+        /*
+            아래 작업을 n이 0보다 큰 동안 반복한다. 
+                int digit = n%10; //10으로 나눈 나머지로 첫 번째 숫자를 구한다. 
+                sum += digit
+                n = n/10; // n을 10으로 나눈다.
+        */
+        int sum = 0;
+        while (n > 0) {
+            int digit = n%10;
+            sum += digit;
+            n = n/10;
+        }
+
+        System.out.println(sum);
 
     }
 
