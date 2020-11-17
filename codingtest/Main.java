@@ -37,7 +37,7 @@ public class Main {
         // findMrKim();    
         // findPrimeNumberCount();
         // makeSuBakString();
-        str2num();
+        // str2num();
     }
 
     private static void str2num() {
@@ -58,7 +58,7 @@ public class Main {
         // String s = "1234";
         // String s = "-1234";
         String s = "+1234";
-        
+
         char[] carr = s.toCharArray();
         int positionValue = 1;
 
