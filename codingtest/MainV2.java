@@ -113,7 +113,7 @@ public class MainV2 {
                     whichHand = calculateDistance(left, right, leftOrRightHanded, numbers[i]);  
                     if (whichHand.equals("L")) { // 왼 손가락의 마지막 위치 기억
                         left = numbers[i];
-                    } else { // 오는 손가락의 마지막 위치 이용
+                    } else { // 오른 손가락의 마지막 위치 이용
                         right = numbers[i];
                     }
                     break;
