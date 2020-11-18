@@ -6,10 +6,10 @@ public class InfoOlympiad {
     private static int diffBetweenMaxMin = -1;
     public static void main(String[] args) {
         // rockPaperScissors();
-        openTheMouthOfPumpkin();
+        crashPumpkin();
     }
 
-    private static void openTheMouthOfPumpkin() {
+    private static void crashPumpkin() {
         /*
          K개의 팀이 박 터트리기 게임을 한다. 각 팀은 하나의 바구니를 가지고 있고, 바구니에 들어있는 공들을 던져서 자기 팀의 박을 터트려야 한다. 
         
@@ -43,16 +43,6 @@ public class InfoOlympiad {
         */
 
         /*
-            K가 주어지면 K개로 구할 수 있는 모든 조합을 찾는다. 어디서?
-            1~N 사이?  K개의 조합을 어떻게 찾지?
-
-            i를 1부터 N-1까지 다음을 반복한다. 
-                j를 1부터 N-1까지 다음을 반복한다.
-                    i가 이미 배열에 있는 값이 아니면 배열에 넣고 합을 계산. 합이 N이고 원소의 수가 K이면  그 원소의 최대값과 최소값의 차를 기억
-                                                                                그 값이 그 전에 기억된 값보다 크면 버림 
-                    합이 N이지만 원소의 수가 K보다 작으면 i를 배열의 첫번째 원소 값으로 변경, 나머지 원소는 삭제(0)
-                    합이 N보다 크면 i를 배열의 첫번째 원소 값으로 변경, 
-
             
             i를 1부터 N-1까지 다음을 반복한다. 
                 i를 첫번째 원소로 하는 K-1개의 조합을 찾는다.          
