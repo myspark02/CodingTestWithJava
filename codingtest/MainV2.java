@@ -17,7 +17,391 @@ public class MainV2 {
         // removeMinFromArray();
         // EvenOrOdd();
 
-        pressKeyPad();
+        // pressKeyPad();
+        // getGCDLCM();
+        // predictCollatz();
+        // getAverage();
+        // isHashyadNumber();
+        // hidePhoneNumber();
+        // matrixSum();
+        // getNNumsStartFromXStepByX();
+        // printRectangleStars();
+        giveFundWithinBudget();
+    }
+
+    private static void giveFundWithinBudget() {
+        /*
+        문제 설명
+        S사에서는 각 부서에 필요한 물품을 지원해 주기 위해 부서별로 물품을 구매하는데 필요한 금액을 조사했습니다. 
+        그러나, 전체 예산이 정해져 있기 때문에 모든 부서의 물품을 구매해 줄 수는 없습니다. 
+        그래서 최대한 많은 부서의 물품을 구매해 줄 수 있도록 하려고 합니다.
+
+        물품을 구매해 줄 때는 각 부서가 신청한 금액만큼을 모두 지원해 줘야 합니다. 
+        예를 들어 1,000원을 신청한 부서에는 정확히 1,000원을 지원해야 하며, 1,000원보다 적은 금액을 지원해 줄 수는 없습니다.
+
+        부서별로 신청한 금액이 들어있는 배열 d와 예산 budget이 매개변수로 주어질 때, 
+        최대 몇 개의 부서에 물품을 지원할 수 있는지 return 하도록 solution 함수를 완성해주세요.
+
+        제한사항
+        d는 부서별로 신청한 금액이 들어있는 배열이며, 길이(전체 부서의 개수)는 1 이상 100 이하입니다.
+        d의 각 원소는 부서별로 신청한 금액을 나타내며, 부서별 신청 금액은 1 이상 100,000 이하의 자연수입니다.
+        budget은 예산을 나타내며, 1 이상 10,000,000 이하의 자연수입니다.
+        입출력 예
+        d	budget	result
+        [1,3,2,5,4]	9	3
+        [2,2,3,3]	10	4
+        입출력 예 설명
+        입출력 예 #1
+        각 부서에서 [1원, 3원, 2원, 5원, 4원]만큼의 금액을 신청했습니다. 
+        만약에, 1원, 2원, 4원을 신청한 부서의 물품을 구매해주면 예산 9원에서 7원이 소비되어 2원이 남습니다. 
+        항상 정확히 신청한 금액만큼 지원해 줘야 하므로 남은 2원으로 나머지 부서를 지원해 주지 않습니다. 위 방법 외에 3개 부서를 지원해 줄 방법들은 다음과 같습니다.
+
+        1원, 2원, 3원을 신청한 부서의 물품을 구매해주려면 6원이 필요합니다.
+        1원, 2원, 5원을 신청한 부서의 물품을 구매해주려면 8원이 필요합니다.
+        1원, 3원, 4원을 신청한 부서의 물품을 구매해주려면 8원이 필요합니다.
+        1원, 3원, 5원을 신청한 부서의 물품을 구매해주려면 9원이 필요합니다.
+        3개 부서보다 더 많은 부서의 물품을 구매해 줄 수는 없으므로 최대 3개 부서의 물품을 구매해 줄 수 있습니다.
+
+        입출력 예 #2
+        모든 부서의 물품을 구매해주면 10원이 됩니다. 따라서 최대 4개 부서의 물품을 구매해 줄 수 있습니다.
+        */
+
+        /* 
+            예산 신청 배열의 원소를 오름차순 정렬한다.
+            순서대로 배정 예산을 넘지 않을 때까지 몇 번을 더할 수 있는지를 
+            계산한다.
+        */
+
+        // int[] d = {1,3,2,5,4};
+        // int budget = 9;
+        int[] d = {2,2,3,3};
+        int budget = 10;
+
+        int answer = 0;
+
+        Arrays.sort(d);
+
+        int sum = 0;
+        
+        int i = 0;
+        for (; i < d.length; i++) {
+            sum += d[i];
+            if (sum>= budget) {
+                if (sum == budget)
+                    answer = i+1;
+                else 
+                    answer = i;    
+                break;
+            }    
+        }
+        if (i  == d.length)
+            answer = d.length;
+
+        System.out.println(answer);
+        System.out.println(Arrays.toString(d));
+    }
+
+    private static void printRectangleStars() {
+        /*
+            직사각형 별찍기
+            문제 설명
+            이 문제에는 표준 입력으로 두 개의 정수 n과 m이 주어집니다.
+            별(*) 문자를 이용해 가로의 길이가 n, 세로의 길이가 m인 직사각형 형태를 출력해보세요.
+
+            제한 조건
+            n과 m은 각각 1000 이하인 자연수입니다.
+            예시
+            입력
+
+            5 3
+            출력
+
+            *****
+            *****
+            *****
+        */
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+       
+    }
+
+    private static void getNNumsStartFromXStepByX() {
+        /*
+            x만큼 간격이 있는 n개의 숫자
+            문제 설명
+            함수 solution은 정수 x와 자연수 n을 입력 받아, x부터 시작해 x씩 증가하는 숫자를 n개 지니는 리스트를 리턴해야 합니다. 
+            다음 제한 조건을 보고, 조건을 만족하는 함수, solution을 완성해주세요.
+
+            제한 조건
+            x는 -10000000 이상, 10000000 이하인 정수입니다.
+            n은 1000 이하인 자연수입니다.
+            입출력 예
+            x	n	answer
+            2	5	[2,4,6,8,10]
+            4	3	[4,8,12]
+            -4	2	[-4, -8]        
+        */
+        int x = 2;
+        int n = 5;
+
+        // x = 4;
+        // n = 3;
+        
+        x = -4;
+        n = 2;
+
+        long longx = x; // 값이 정수의 수용 범위를 넘을 수 있기 때문에 반드시 long 변수에 담아 계산해야 됨!!!! 주의하기!!!!
+
+        long[] answer = new long[n];
+        answer[0] = longx;
+        
+        for (int i = 1; i < n; i++) {
+            answer[i] = longx + longx*i;
+        }
+        System.out.println(Arrays.toString(answer));
+
+    }
+
+    private static void matrixSum() {
+      /*
+        행렬의 덧셈
+        문제 설명
+        행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을 서로 더한 결과가 됩니다. 
+        2개의 행렬 arr1과 arr2를 입력받아, 행렬 덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
+
+        제한 조건
+        행렬 arr1, arr2의 행과 열의 길이는 500을 넘지 않습니다.
+        입출력 예
+        arr1	arr2	return
+        [[1,2],[2,3]]	[[3,4],[5,6]]	[[4,6],[7,9]]
+        [[1],[2]]	[[3],[4]]	[[4],[6]]
+      */
+        int[][] arr1 = {{1,2}, {2,3}};
+        int[][] arr2 = {{3,4}, {5,6}};
+
+        int[][] answer = new int[arr1.length][arr1[0].length];
+
+        for (int i = 0; i < arr1.length; i++) {
+            for (int j = 0; j < arr1[i].length; j++) {
+                answer[i][j] = arr1[i][j] + arr2[i][j];
+            }
+        }
+
+        for (int i = 0; i < answer.length; i++)
+            System.out.println(Arrays.toString(answer[i]));
+        
+
+    }
+
+    private static void hidePhoneNumber() {
+        /*
+        핸드폰 번호 가리기
+        문제 설명
+        프로그래머스 모바일은 개인정보 보호를 위해 고지서를 보낼 때 고객들의 전화번호의 일부를 가립니다.
+        전화번호가 문자열 phone_number로 주어졌을 때, 
+        전화번호의 뒷 4자리를 제외한 나머지 숫자를 전부 *으로 가린 문자열을 리턴하는 함수, solution을 완성해주세요.
+
+        제한 조건
+        s는 길이 4 이상, 20이하인 문자열입니다.
+        입출력 예
+        phone_number	return
+        01033334444	*******4444
+        027778888	*****8888
+        */
+
+        String answer = "";
+
+        String phone_number = "01033334444";
+        phone_number = "027778888";
+
+        int i = 0;
+        for (; i < phone_number.length()-4; i++) {
+            answer += "*";
+        }
+        for ( ; i < phone_number.length(); i++) {
+            answer += phone_number.charAt(i);
+        }
+        System.out.println(answer);
+    }
+
+    private static void isHashyadNumber() {
+        /*
+        하샤드 수
+        문제 설명
+        양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야 합니다. 예를 들어 18의 자릿수 합은 1+8=9이고, 18은 9로 나누어 떨어지므로 18은 하샤드 수입니다. 자연수 x를 입력받아 x가 하샤드 수인지 아닌지 검사하는 함수, solution을 완성해주세요.
+
+        제한 조건
+        x는 1 이상, 10000 이하인 정수입니다.
+        입출력 예
+        arr	return
+        10	true
+        12	true
+        11	false
+        13	false
+        입출력 예 설명
+        입출력 예 #1
+        10의 모든 자릿수의 합은 1입니다. 10은 1로 나누어 떨어지므로 10은 하샤드 수입니다.
+
+        입출력 예 #2
+        12의 모든 자릿수의 합은 3입니다. 12는 3으로 나누어 떨어지므로 12는 하샤드 수입니다.
+
+        입출력 예 #3
+        11의 모든 자릿수의 합은 2입니다. 11은 2로 나누어 떨어지지 않으므로 11는 하샤드 수가 아닙니다.
+        */
+        int x = 10;
+        x = 12;
+        x = 11;
+        x = 13;
+        boolean answer = true;
+        int sumOfDigits = 0;
+        int org_x = x;
+
+        while(x > 0) {
+            int digit = x % 10;
+            sumOfDigits += digit;
+            x = x/10;
+        }
+        answer = org_x%sumOfDigits==0;
+        System.out.println(answer);
+        
+    }
+
+    private static void getAverage() {
+        /*
+        평균 구하기
+        문제 설명
+        정수를 담고 있는 배열 arr의 평균값을 return하는 함수, solution을 완성해보세요.
+
+        제한사항
+        arr은 길이 1 이상, 100 이하인 배열입니다.
+        arr의 원소는 -10,000 이상 10,000 이하인 정수입니다.
+        입출력 예
+        arr	return
+        [1,2,3,4]	2.5
+        [5,5]	5
+        */
+
+        // int[] arr = {1, 2, 3, 4};
+        int[] arr = {5,5};
+        double answer = 0;
+
+        double sum = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        answer = sum/arr.length;
+        System.out.println(answer);
+    }
+
+    private static void predictCollatz() {
+        /*
+            콜라츠 추측
+            문제 설명
+            1937년 Collatz란 사람에 의해 제기된 이 추측은, 주어진 수가 1이 될때까지 다음 작업을 반복하면, 
+            모든 수를 1로 만들 수 있다는 추측입니다. 작업은 다음과 같습니다.
+
+            1-1. 입력된 수가 짝수라면 2로 나눕니다. 
+            1-2. 입력된 수가 홀수라면 3을 곱하고 1을 더합니다.
+            2. 결과로 나온 수에 같은 작업을 1이 될 때까지 반복합니다.
+            예를 들어, 입력된 수가 6이라면 6→3→10→5→16→8→4→2→1 이 되어 총 8번 만에 1이 됩니다. 
+            위 작업을 몇 번이나 반복해야하는지 반환하는 함수, solution을 완성해 주세요. 
+            단, 작업을 500번을 반복해도 1이 되지 않는다면 –1을 반환해 주세요.
+
+            제한 사항
+            입력된 수, num은 1 이상 8000000 미만인 정수입니다.
+            입출력 예
+            n	result
+            6	8
+            16	4
+            626331	-1
+            입출력 예 설명
+            입출력 예 #1
+            문제의 설명과 같습니다.
+
+        */
+        long n = 6;  
+        n = 16;
+        n = 626331;  // long으로 선언하지 않으면 중간에 오버플로우가 발생해 잘못된 결과가 나옴!!!! 주의하기!!!!!
+        int cnt = 0;
+
+        while (n != 1) {
+            if (n%2==0) {
+                n = n/2;
+            } 
+            else { 
+                n = n*3+1;
+            }
+            // System.out.println(n);    
+            cnt++;
+            if (cnt >=500) {
+                System.out.println("500번째 시도!!!");
+                break;
+            } 
+        }
+        if (n == 1) {
+            System.out.println(cnt);
+        } else {
+            System.out.println(-1);
+        }
+        
+    }
+
+    private static void getGCDLCM() {
+        /*
+        최대공약수와 최소공배수
+        문제 설명
+        두 수를 입력받아 두 수의 최대공약수와 최소공배수를 반환하는 함수, solution을 완성해 보세요. 배열의 맨 앞에 최대공약수, 그다음 최소공배수를 넣어 반환하면 됩니다. 예를 들어 두 수 3, 12의 최대공약수는 3, 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를 반환해야 합니다.
+
+        제한 사항
+        두 수는 1이상 1000000이하의 자연수입니다.
+        입출력 예
+        n	m	return
+        3	12	[3, 12]
+        2	5	[1, 10]
+        입출력 예 설명
+        입출력 예 #1
+        위의 설명과 같습니다.
+
+        입출력 예 #2
+        자연수 2와 5의 최대공약수는 1, 최소공배수는 10이므로 [1, 10]을 리턴해야 합니다.
+        */
+
+        int n = 3;
+        int m = 12;
+        n = 2; 
+        m = 5;
+        if (n > m) {
+            int tmp = n;
+            n = m;
+            m = tmp;
+        }
+        int multiple = n * m;
+        /*
+            최대 공약수
+            1. n이 0이면 최대공약수는 m
+            2. r = m%n
+            3. m = n
+            4. n = r
+            5. 1번으로 
+
+        */
+        while (n != 0) {
+            int r = m%n;
+            m = n;
+            n = r;
+        }
+        // 최소공배수는 n*m/최대공약수
+        int[] result = {m, multiple/m};
+        System.out.println(Arrays.toString(result));
     }
 
     private static void pressKeyPad() {
