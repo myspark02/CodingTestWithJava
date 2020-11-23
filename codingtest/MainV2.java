@@ -92,7 +92,7 @@ public class MainV2 {
 
             1. double[] failRates = new double[스테이지의 갯수];
             for (int i = 0; i < 스테이지의 갯수; i++) {
-                failRates[i] = stages 배열에서 값이 i+1인 원소의 수를 스테이지의 갯수로 나눈 값
+                failRates[i] = stages 배열에서 값이 i+1인 원소의 수를 값이 i+1이상인 원소의 갯수로 나눈 값
             }
 
             2. idx = 0, failRates의 각 원소의 값 중에서 가장 큰 값의 인덱스 maxIdx를 찾아 
