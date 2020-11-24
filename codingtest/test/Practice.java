@@ -17,9 +17,13 @@ public class Practice {
     private static void ticTacToe() {
         char[][] board = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
         Scanner input = new Scanner(System.in);
+        boolean isOver = false;
         while(true) {
             display(board);
-
+            if (isOver) {
+                System.out.println("게임을 종료합니다.");
+                break;
+            }
             System.out.println("다음 좌표를 입력하세요.");
             int row = input.nextInt();
             int col = input.nextInt();
@@ -31,8 +35,7 @@ public class Practice {
                 continue;
             }
             if(nextPosition(board, 'O') == false) {
-                System.out.println("게임을 종료합니다.");
-                break;
+                isOver = true;
             }
         }
     }
@@ -59,8 +62,8 @@ public class Practice {
                 calculateWeight(tictactoe, weights, i, j, ox);
             }
         }
-        // for (int i = 0; i < weights.length; i++)
-        //     System.out.println(Arrays.toString(weights[i]));
+        for (int i = 0; i < weights.length; i++)
+            System.out.println(Arrays.toString(weights[i]));
 
         boolean result = findMaxWeightAndMark(weights, tictactoe);
         return result;
