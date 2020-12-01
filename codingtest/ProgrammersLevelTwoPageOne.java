@@ -37,22 +37,55 @@ public class ProgrammersLevelTwoPageOne {
 
         // test case 통과율 50%
         long answer = 0;
-        int w = 3;
-        int h = 8;
-        long discardCnt = 0;
-        for (long i = 0; i < w; i++) {
-            double val2 = (double)(i+1)*h/w ;
-            double val1 = (double)i*h/w;
-            if (val2 <= h) {
-                discardCnt += Math.ceil(val2 - val1);
-            }    
+        int w = 8;
+        int h = 12;
+        // double height = h;
+        // double width = w;
+        // long discardCnt = 0;
+        // double i = 0.0;
+        // double hwRatio = height/width;
+        // while (i+1 <= width) {
+
+        //     double val2 = (i+1)*hwRatio ;
+        //     double val1 = i*hwRatio;
+        //     if (val2 > height) val2 = height;
+            
+        //     discardCnt += Math.ceil(val2 - val1);
+            
+        //     i += 1;
+        // }
+        // System.out.println("discardCnt:" + discardCnt);
+
+        // answer = (long)w*(long)h - discardCnt;
+
+        // System.out.println("answer:" + answer);
+
+
+        // 다른 풀이법
+        /*
+         깨진 사각형의 개수 = 가로 + 세로 - (가로 세로의 최대공약수)
+         이란다...
+        */
+
+        long width = w;
+        long height = h;
+
+        long whole = width*height;
+        long broken = width + height - gcd(w, h);
+        answer = whole - broken;
+
+        System.out.println(answer);
+
+    }
+
+    private static long gcd(long w, long h) {
+        if (w < h) {
+            long tmp = w;
+            w = h;
+            h = tmp;
         }
-        System.out.println("discardCnt:" + discardCnt);
-
-        answer = (long)w*(long)h - discardCnt;
-
-        System.out.println("answer:" + answer);
-
+        if (h == 0) return w;
+        return gcd(h, w%h);
     }
 
     private static void stockPrices() {
