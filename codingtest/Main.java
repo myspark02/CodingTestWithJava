@@ -699,7 +699,7 @@ public class Main {
 
         답을 도출하는 과정은 다음과 같습니다.
         n (10진법)	n (3진법)	앞뒤 반전(3진법)	10진법으로 표현
-        45	1200	0021	7
+        45	        1200	    0021	        7
         따라서 7을 return 해야 합니다.
         */
         Scanner input = new Scanner(System.in);
