@@ -55,16 +55,15 @@ public class ProgrammersLevelTwoPageOne {
             //   100 -> 24  (3*2+3) 
             //   101 -> 41  (3*3+1)
             //   
-
             int n = 6;
             String answer = "";
+            String temp = "";
             while (n > 0) {
-                int val = 1;
-                int i = 0;
-                for (; val < n; i++) {
-                    val = val*3;
-                }
+                int digit = n % 3;
+                temp = digit + temp;
+                n = n/3;
             }
+      
             System.out.println(answer);
 
     }   
