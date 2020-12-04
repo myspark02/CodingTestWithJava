@@ -22,7 +22,7 @@ public class Main {
         */
         // getTheGiviUpsMath();
         
-        //stolenAthleteSuit();
+        // stolenAthleteSuit();
         //kthNumber();
         //twoThoundsSixteen();
         //ternaryFlipFlop();
@@ -30,7 +30,7 @@ public class Main {
         // filterElementsDividedBySpecifiedNumber();
         // sumBetweenTwoNumbers();
         // sumOfEveryTwoCombination();
-        // sortStringBasedOnNthChar();
+        sortStringBasedOnNthChar();
         // compareNumberOfPandY();
         // sortCharDesc();
         // checkLengthNumber();
@@ -38,7 +38,7 @@ public class Main {
         // findPrimeNumberCount();
         // makeSuBakString();
         // str2num();
-        dollPickupGame();
+        // dollPickupGame();
     }
 
     private static void dollPickupGame() {
@@ -438,46 +438,49 @@ public class Main {
         */
 
         // String[] source = {"sun", "bed", "car"};
-        String[] source = {"abce", "abcd", "cdx"};
+        String[] strings = {"abce", "abcd", "cdx"};
         
         Scanner input = new Scanner(System.in);
 
-        int kthChar = input.nextInt();
+        int n = input.nextInt();
         
 
         //selection sort
         int minIdx = 0;
-        for (int i = 0; i < source.length-1; i++) { 
+        for (int i = 0; i < strings.length-1; i++) { 
             minIdx = i;
-            for (int j = i+1; j < source.length; j++ ) {
-                if (source[j].charAt(kthChar-1) < source[minIdx].charAt(kthChar-1)) {
+            for (int j = i+1; j < strings.length; j++ ) {
+                if (strings[j].charAt(n) < strings[minIdx].charAt(n)) {
                     minIdx = j;
-                } else if (source[j].charAt(kthChar-1) == source[minIdx].charAt(kthChar-1)) { // k번째 문자가 동일하면 사전순으로 앞선 문자열을 찾아야 함.
+                } else if (strings[j].charAt(n) == strings[minIdx].charAt(n)) { // k번째 문자가 동일하면 사전순으로 앞선 문자열을 찾아야 함.
                     // alphabet 순으로 앞선 것을 찾자..
                     // 짤은 문자열의 길이를 len에 저장 
-                    int len = source[j].length() < source[minIdx].length()?source[j].length():source[minIdx].length();
+                    int len = strings[j].length() < strings[minIdx].length()?strings[j].length():strings[minIdx].length();
                     int k = 0;
                     // 두 문자열에서 같은 문자들은 스킵 
-                    while(k < len && source[j].charAt(k) == source[minIdx].charAt(k)) k++;
+                    while(k < len && strings[j].charAt(k) == strings[minIdx].charAt(k)) k++;
 
                     if (k < len) { // 두 문자열에서 같은 문자는 스킵하고 다른 문자를 비교
-                        if (source[j].charAt(k) < source[minIdx].charAt(k)) {
+                        if (strings[j].charAt(k) < strings[minIdx].charAt(k)) {
                             minIdx = j;
                         }
                     } else { // 짧은 길의의 문자열이 긴 길이의 문자열의 부분집합인 경우임. 
-                        if (source[j].length() < source[minIdx].length()) {
+                        if (strings[j].length() < strings[minIdx].length()) {
                             minIdx = j;
                         }
                     }
                 }
             }
             // 찾아진 제일 작은 위치의 값과 i 인덱스 값을 교환 
-            String tmp = source[i];
-            source[i] = source[minIdx];
-            source[minIdx] = tmp;
+            String tmp = strings[i];
+            strings[i] = strings[minIdx];
+            strings[minIdx] = tmp;
         }
-
-        System.out.println(Arrays.toString(source));
+        String[] answer = new String[strings.length];
+        for (int i = 0; i < strings.length; i++) {
+            answer[i] = strings[i];
+        }
+        System.out.println(Arrays.toString(answer));
 
     }
 
@@ -873,21 +876,30 @@ public class Main {
     s.toLowerCase(); borrows[k] where k is index of borrows holding the borrower
         */
         
-        int n = 3;
-        int[] lost = {2, 4};
+        int n = 5;
+        int[] lost = {3};
         lost = new int[]{3};
        
-        int[] reserve = {1, 3, 5};
+        int[] reserve = {2, 3};
         //reserve = new int[]{3};
-        reserve = new int[]{1};
+        // reserve = new int[]{1};
+        int cnt = 0;
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                if (reserve[j] != -1 && lost[i] == reserve[j]) {
+                    cnt++;
+                    lost[i] = reserve[j] = -1;
+                }
+            }
+        }
         
-        int result = n - lost.length;
+        int answer = n - lost.length+cnt;
         
         int borrowCnt = 0;
         
         for (int i = 0; i < lost.length; i++) {
             for (int j = 0; j < reserve.length; j++) {
-                if (reserve[j] == lost[i] - 1 || reserve[j] == lost[i] + 1) {
+                if (lost[i] != -1 && reserve[j] == lost[i] - 1 || reserve[j] == lost[i] + 1) {
                     borrowCnt++;
                     reserve[j] = -1;
                     break;
@@ -895,9 +907,9 @@ public class Main {
             }
         }
         
-        result += borrowCnt;
+        answer += borrowCnt;
         
-        System.out.println(result);
+        System.out.println(answer);
         
     }
     
