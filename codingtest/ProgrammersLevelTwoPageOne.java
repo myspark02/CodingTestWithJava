@@ -44,27 +44,76 @@ public class ProgrammersLevelTwoPageOne {
         */
 
         // 1. 3진수로 변환  1, 2, 3 -> 1, 2, 4
-        // 2.    1   -> 1                           102 -> 42  (3*3 + 2)
-            //   2   -> 2                           110  -> 44 (3*3 + 3)
-            //   3   -> 4                           111 -> 141  (3²*1 + 3 + 1)  
-            //   11  -> 11  (3*1+1)                 112 -> 142  (3²*1 + 3 + 2)
-            //   12  -> 12  (3*1+2)
-            //   20  -> 14  (3*1+3)
+        // 2.    1   -> 1                           102 ->  42  (3*3 + 2)
+            //   2   -> 2                           110 -> 44 (3*3 + 3)
+            //   3   -> 4                           111 -> 111  (3²*1 + 3*1 + 1)  
+            //   11  -> 11  (3*1+1)                 112 -> 112  (3²*1 + 3*1 + 2)
+            //   12  -> 12  (3*1+2)                 120 -> 114  (3²*1 + 3*1 + 3)
+            //   20  -> 14  (3*1+3)                 121 -> 121  (3²*1 + 3*2 + 1)
             //   21  -> 21  (3*2+1)
             //   22  -> 22  (3*2+2)
             //   100 -> 24  (3*2+3) 
             //   101 -> 41  (3*3+1)
-            //   
-            int n = 6;
+            
+            /* 
+                ==> 3진수 표현에서 0이면 3ⁱ * 3이라 하고 위에서 1빌려온다. 
+                3진수로 101이면  최상위 1은 빌려줘서 0 -> 3¹*3 + 3⁰*1 그래서 41
+
+                20001이면 
+                   2             0                  0              0                0            1
+                   1(빌림X)       2(빌림O)            2(빌림O)        2(빌림O)          4(빌림X)      1 (빌림X)
+                */ 
+            int n = 15;
             String answer = "";
-            String temp = "";
+            StringBuilder sb = new StringBuilder();
+            
             while (n > 0) {
                 int digit = n % 3;
-                temp = digit + temp;
+                // temp = digit + temp;
+                sb.append(digit);
                 n = n/3;
             }
-      
-            System.out.println(answer);
+            String temp = sb.toString();
+            // System.out.println(temp);
+            
+            sb = new StringBuilder();
+            boolean borrow = false; // 위의 자리에서 빌려온 값 
+            for (int i = 0; i < temp.length(); i++) {
+            
+                char c = temp.charAt(i);
+                // int digit = Integer.parseInt(c+"");
+
+                if (borrow == false) { // 빌려준 것이 없을 때 
+                    if (c != '0')
+                        sb.append(c);
+                        // answer = c + answer;
+                    else {
+                        sb.append("4");
+                        // answer = "4" + answer;
+                        borrow=true;  // 위에서 빌려왔음을 표시. 
+                    }
+                } else { // 빌려준 것이 있을 때 
+                    if (c == '0') c = '2'; // 위에서 빌려와야 하니 borrow는 여전히 1
+                    else {
+                        c = (char)(c - 1);
+                        borrow = false; // 빌려준 것은 일단 처리 했음..
+                    }
+                    if (c > '0') { // 빌려준 것을 처리하고 난 후의 값
+                        sb.append(c);
+                        //  answer = c + answer;
+                    } else { // 0이면 위에서 빌려오고 4로...
+                        if (i < temp.length()-1) { // 빌려올 때가 있으면..
+                            sb.append("4");
+                            // answer = "4"+answer;
+                            borrow = true;
+                        }
+                            
+                    }    
+                }
+            }
+            
+            answer = sb.reverse().toString();
+            System.out.println("\n"+answer);
 
     }   
 
