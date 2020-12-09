@@ -12,7 +12,289 @@ public class ProgrammersLevelTwoPageOne {
         // priorityBasedPrint2();
         // trucksCrossingBridge();
         // hindex();
-        worldOf124();
+        // worldOf124();
+        kakaoFriendsColoringBook();
+    }
+
+    private static void kakaoFriendsColoringBook() {
+        /*
+            카카오프렌즈 컬러링북
+            문제 설명
+            카카오 프렌즈 컬러링북
+            출판사의 편집자인 어피치는 네오에게 컬러링북에 들어갈 원화를 그려달라고 부탁하여 여러 장의 그림을 받았다. 
+            여러 장의 그림을 난이도 순으로 컬러링북에 넣고 싶었던 어피치는 영역이 많으면 색칠하기가 까다로워 어려워진다는 
+            사실을 발견하고 그림의 난이도를 영역의 수로 정의하였다. (영역이란 상하좌우로 연결된 같은 색상의 공간을 의미한다.)
+
+            그림에 몇 개의 영역이 있는지와 가장 큰 영역의 넓이는 얼마인지 계산하는 프로그램을 작성해보자.
+
+            alt text
+
+            위의 그림은 총 12개 영역으로 이루어져 있으며, 가장 넓은 영역은 어피치의 얼굴면으로 넓이는 120이다.
+
+            입력 형식
+            입력은 그림의 크기를 나타내는 m과 n, 그리고 그림을 나타내는 m × n 크기의 2차원 배열 picture로 주어진다. 제한조건은 아래와 같다.
+
+            1 <= m, n <= 100
+            picture의 원소는 0 이상 2^31 - 1 이하의 임의의 값이다.
+            picture의 원소 중 값이 0인 경우는 색칠하지 않는 영역을 뜻한다.
+            출력 형식
+            리턴 타입은 원소가 두 개인 정수 배열이다. 그림에 몇 개의 영역이 있는지와 가장 큰 영역은 몇 칸으로 이루어져 있는지를 리턴한다.
+
+            예제 입출력
+            m	n	picture	answer
+            6	4	[[1, 1, 1, 0], [1, 2, 2, 0], [1, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 3], [0, 0, 0, 3]]	[4, 5]
+            예제에 대한 설명
+            예제로 주어진 그림은 총 4개의 영역으로 구성되어 있으며, 왼쪽 위의 영역과 오른쪽의 영역은 모두 1로 구성되어 있지만 상하좌우로 이어져있지 않으므로 다른 영역이다. 
+            가장 넓은 영역은 왼쪽 위 1이 차지하는 영역으로 총 5칸이다.
+        */
+
+        int m = 6;
+        int n = 4;
+        int[][] picture = {{1, 1, 1, 0},{1, 2, 2, 0}, {1, 0, 0, 1}, {0, 0, 0, 1}, {0, 0, 0, 3}, {0, 0, 0, 3}};
+        // int[][] picture = {{0, 0, 0, 0},{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+        // int m = 13;
+        // int n = 16;
+        // int[][] picture = { {0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0},
+                            // {0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
+                            // {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
+                            // {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                            // {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                            // {0, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 0},
+                            // {0, 1, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 0},
+                            // {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
+                            // {0, 1, 3, 3, 3, 1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 0},
+                            // {0, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 0},
+                            // {0, 0, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 0, 0},
+                            // {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
+                            // {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},                                                                                                                                                                                                                                                                                                                    
+                            //     } ;
+        int numberOfArea = 0;
+        int maxSizeOfOneArea = 0;
+
+        /*
+            클래스 Cell을 만들자  : row, col, group
+            같은 값을 가지는 셀의 row, col 인덱스를 저장
+            어디에? HashMap에 저장 (cell의 값, 그 값을 가지는 Cell의 List)
+            각 List의 원소에 대해 그 원소의 row, col을 조사해 다른 셀(상/하/좌/우)과 연결된 것인지 체크
+                - 연결되었다면 그 셀을 그 셀과 연결된 같은 그룹에 저장. <- 그룹은 HashMap으로? (값과 그 갑을 가진 셀의 갯수) 
+                 - 연결되지 않았다면 그 셀을 새로운 그룹에 저장.
+
+        */
+        HashMap<Integer, ArrayList<Cell>> cellsWithSameValue = new HashMap<>();
+
+        // 셀의 값과, 그 값을 가진 셀들을 값으로 가지는 HashMap 생성.
+        
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int key = picture[i][j];
+                
+                if (key == 0) continue; // 0은 색칠하지 않은 영역이니까 skip
+                ArrayList<Cell> list = cellsWithSameValue.get(key);
+                if (list == null) {
+                    list = new ArrayList<>();
+                    Cell cell = new Cell(i, j);
+                    list.add(cell);
+                    cellsWithSameValue.put(key, list);
+                } else {
+                    Cell cell = new Cell(i, j);
+                    list.add(cell);
+                }
+            }
+        }
+        
+        // 각 영역별 cell의 수를 저장하자.
+        HashMap<Integer, Integer> areaCellNum = new HashMap<>();
+        // 같은 값을 가진 셀들에 대해, 영역이 몇개인지, 그 중 가장 넓은 영역의 셀 수는 몇개인지 체크
+        Iterator<Integer> iter = cellsWithSameValue.keySet().iterator();
+        while(iter.hasNext()) { // 같은 값을 가진 cell들의 리스트에 대해
+            int key = iter.next();
+            ArrayList<Cell> list = cellsWithSameValue.get(key);
+            // System.out.println("key:" + key + " : " + list + "\n\n");
+            for (int i = 0; i < list.size(); i++) {
+                Cell cell = list.get(i);
+                // 이 cell과 상/하/좌/우 중에 하나라도 연결된 cell이 있는지 찾아본다. 있다면 같은 그룹으로 묶는다. 
+                boolean adjacentCellFound = false;
+                ArrayList<Cell> visited = new ArrayList<>();
+                for (int j = 0; j < list.size(); j++) {
+                    if (i == j) continue;
+                    Cell aCell = list.get(j);
+                    boolean isAdjacent = checkIfAdjacent(cell, aCell);
+
+                    if (isAdjacent) {
+                        if (aCell.group == 0) { // group is not asigned yet, then 
+                            
+                            int anum = findAreaNum(aCell, list, picture, visited); 
+
+                            if (anum == 0) {
+                                numberOfArea++;
+                                aCell.group = numberOfArea;
+                            } else {
+                                aCell.group = anum;
+                            }
+                 
+                        }
+                        cell.group = aCell.group;// 같은 영역으로 표시.
+
+                        System.out.println(cell);
+                        System.out.println(visited);
+
+                        Integer cnt = areaCellNum.get(cell.group);
+                        if (cnt == null) { // 그 area의 cell 수를 증가시킴.
+                            areaCellNum.put(cell.group, 1);
+                        } else {
+                            areaCellNum.put(cell.group, cnt+1);
+                        }
+                        adjacentCellFound = true;
+                        break;
+                    }
+                }
+                if (adjacentCellFound == false) {
+                    numberOfArea++;
+                    cell.group = numberOfArea; // 새로운 영역으로 표시. 
+                    areaCellNum.put(cell.group, 1);
+                }
+                // System.out.println("cell:" + cell + ", " + adjacentCellFound);
+
+
+            }
+        }
+        
+        // 가장 큰 영역을 찾는다. 
+        iter = areaCellNum.keySet().iterator();
+        int sum = 0;
+        while(iter.hasNext()) {
+            int key = iter.next();
+            int cnt = areaCellNum.get(key);
+            // System.out.println("key:" + key + ", cnt:" + cnt);
+            sum += cnt;
+            if ( cnt > maxSizeOfOneArea) {
+                maxSizeOfOneArea = cnt;
+            }
+        }
+        System.out.println("sum:" + sum);
+        // System.out.println(areaCellNum.size());
+        int[] answer = new int[2];
+        answer[0] = numberOfArea;
+        answer[1] = maxSizeOfOneArea;
+        System.out.println(Arrays.toString(answer));
+        iter = cellsWithSameValue.keySet().iterator();
+        while(iter.hasNext()) { // 같은 값을 가진 cell들의 리스트에 대해
+            int key = iter.next();
+            ArrayList<Cell> list = cellsWithSameValue.get(key);
+            System.out.println("key:" + key + " : " + list + "\n\n");
+        }    
+    }
+
+    private static int findAreaNum(Cell aCell, ArrayList<Cell> list, int[][]picture, ArrayList<Cell> visited) {
+        if (aCell.group != 0) return aCell.group;   
+        // 위쪽으로 인접셀을 찾기 
+        // System.out.println("row:" + aCell.row + ", col:" + aCell.col);
+        if (aCell.row > 0) {
+            if (picture[aCell.row][aCell.col] == picture[aCell.row-1][aCell.col]) {
+                Cell bCell = findCell(aCell.row-1, aCell.col, list);
+                
+                if (bCell.group != 0) return bCell.group;
+                if (visited.indexOf(bCell) == -1) {
+                    visited.add(bCell);
+                    int num = findAreaNum(bCell, list, picture, visited);
+                    if (num > 0) return num;
+                }    
+            } 
+        }    
+  
+        // 위쪽 인접셀이 없으면 왼쪽으로 인접셀 찾기
+        if (aCell.col > 0) {
+            if (picture[aCell.row][aCell.col] == picture[aCell.row][aCell.col-1]) {
+                Cell bCell = findCell(aCell.row, aCell.col-1, list);
+                if (bCell.group != 0) return bCell.group;
+                if (visited.indexOf(bCell) == -1) {
+                    visited.add(bCell);
+                    int num = findAreaNum(bCell, list, picture, visited);
+                    if (num > 0) return num;
+                } 
+                // return findAreaNum(bCell, list, picture);
+            } 
+        }
+        // 왼쪽 인접셀이 없으면 아래쪽으로 인접셀 찾기
+        if (aCell.row < picture.length-1) {
+            if (picture[aCell.row][aCell.col] == picture[aCell.row+1][aCell.col]) {
+                Cell bCell = findCell(aCell.row+1, aCell.col, list);
+                if (bCell.group != 0) return bCell.group;
+                if (visited.indexOf(bCell) == -1) {
+                    visited.add(bCell);
+                    int num = findAreaNum(bCell, list, picture, visited);
+                    if (num > 0) return num;
+                } 
+                // return findAreaNum(bCell, list, picture);
+            } 
+        }
+        // 아래쪽 인접셀이 없으면 오른쪽 인접셀 찾기
+        if (aCell.col < picture[aCell.row].length-1) {
+            if (picture[aCell.row][aCell.col] == picture[aCell.row][aCell.col+1]) {
+                Cell bCell = findCell(aCell.row, aCell.col+1, list);
+                if (bCell.group != 0) return bCell.group;
+                if (visited.indexOf(bCell) == -1) {
+                    visited.add(bCell);
+                    int num = findAreaNum(bCell, list, picture, visited);
+                    if (num > 0) return num;
+                } 
+                // return findAreaNum(bCell, list, picture);
+            } 
+        }
+        return 0;
+    }
+
+    private static Cell findCell(int row, int col, ArrayList<Cell> list) {
+        for (int i = 0; i < list.size(); i++) {
+            Cell cell = list.get(i);
+            if (cell.row == row && cell.col==col) return cell;
+        }
+
+        return null;
+    }
+
+    private static  boolean checkIfAdjacent(Cell cell, Cell aCell) {
+        boolean adjacent = false;
+        int tmpRow = aCell.row;
+        int tmpCol = aCell.col;
+
+        if (tmpCol == cell.col && tmpRow == cell.row - 1) { // 위의 셀인지 체크
+            adjacent = true;
+        } else if (tmpCol == cell.col - 1 && tmpRow == cell.row) { // 왼쪽 셀인지 체크
+            adjacent = true;
+        } else if (tmpCol == cell.col && tmpRow == cell.row+1) { // 아래 셀인지 체크
+            adjacent = true;
+        } else if (tmpCol == cell.col + 1 && tmpRow == cell.row) { // 오른쪽 셀인지 체크 
+            adjacent = true;
+        }
+
+        return adjacent;
+    }
+    public static class Cell {
+        public int row;
+        public int col;
+        public int group;
+        public Cell(int row, int col, int group) {
+            this.row = row;
+            this.col = col;
+            this.group = group;
+        }
+        public Cell(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+
+        public boolean isSameColor(Cell cell, int[][] picture) {
+          
+            if (picture[row][col] == picture[cell.row][cell.col])
+                return true;
+        
+            return false;
+        }
+
+        public String toString() {
+            return "[row:" + row + ", col: " + col + ", group:" + group+"]";
+        }
     }
 
     private static void worldOf124() {
