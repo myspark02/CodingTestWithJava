@@ -13,8 +13,108 @@ public class ProgrammersLevelTwoPageOne {
         // trucksCrossingBridge();
         // hindex();
         // worldOf124();
-        kakaoFriendsColoringBook();
+        // kakaoFriendsColoringBook();
+        triangleSnail();
     }
+    private static void triangleSnail() {
+        /*
+        삼각 달팽이
+        문제 설명
+        정수 n이 매개변수로 주어집니다. 다음 그림과 같이 밑변의 길이와 높이가 n인 삼각형에서 맨 위 꼭짓점부터 반시계 방향으로 달팽이 채우기를 진행한 후, 
+        첫 행부터 마지막 행까지 모두 순서대로 합친 새로운 배열을 return 하도록 solution 함수를 완성해주세요.
+
+        examples.png
+
+        제한사항
+        n은 1 이상 1,000 이하입니다.
+        입출력 예
+        n	result
+        4	[1,2,9,3,10,8,4,5,6,7]
+        5	[1,2,12,3,13,11,4,14,15,10,5,6,7,8,9]
+        6	[1,2,15,3,16,14,4,17,21,13,5,18,19,20,12,6,7,8,9,10,11]
+        입출력 예 설명
+        입출력 예 #1
+
+        문제 예시와 같습니다.
+        입출력 예 #2
+
+        문제 예시와 같습니다.
+        입출력 예 #3
+
+        문제 예시와 같습니다.
+        */
+
+        /*
+            전혀 못 움직일 때까지 다음을 반복
+                각 줄의 비워있는 첫번째 셀을 따라 아래로 이동 끝까지 도달하면 
+	            비워 있는 마지막 줄을 따라 비워있는 마지막 열까지 이동
+	            각 줄의 비워있는 마지막 셀을 따라 위로 이동
+        */
+
+        /*
+            1  0  0  0 
+            2  9  0  0
+            3  10 8  0
+            4  5  6  7
+        */
+        int n = 6;
+        int[][] triangle = new int[n][n];
+        int[] answer = new int[(n+1)*n/2];
+        int noMove=0;
+        int num=1;
+        int row = 0;
+        int col = 0;
+        while (noMove < 3) {
+            noMove = 0;
+
+            System.out.println("row:" + row + ", col:" + col);
+            // 밑으로 내려가기 : 시작 row와 column 찾기
+            int startRow = row;
+            
+            for (; row < n && triangle[row][col] == 0; row++)  {
+                triangle[row][col] = num++;
+            }
+            if (row == startRow) noMove++;
+
+
+            // 옆으로 이동하기
+            row -= 1;
+            col  += 1;
+            int startCol = col;
+            for ( ; col < n && triangle[row][col] == 0; col++) {
+                triangle[row][col] = num++;
+            }
+            if (col == startCol) noMove++;
+            
+            // 위로 이동하기
+            row -= 1;
+            col -= 2;
+            startRow = row;
+            for ( ; row >= 0 && col >= 0 && triangle[row][col] == 0; row--, col--) {
+                triangle[row][col] = num++;
+            }
+            if (row == startRow) noMove++;
+
+            row += 2;
+            col += 1;
+          
+        }
+
+        int idx = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i+1; j++) {
+                answer[idx++] = triangle[i][j];
+            }
+        }
+        
+        for (int i = 0; i < n; i++) {
+            System.out.println(Arrays.toString(triangle[i]));
+        }
+        System.out.println("\n#########################");
+        System.out.println(Arrays.toString(answer));
+
+    }
+
 
     private static void kakaoFriendsColoringBook() {
         /*
