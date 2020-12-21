@@ -25,6 +25,7 @@ public class DragPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         image.paintIcon(this, g, (int)imageCorner.getX(), (int)imageCorner.getY());
+        // image.paintIcon(null, g, (int)imageCorner.getX(), (int)imageCorner.getY());
     }
 
     private class ClickListener extends MouseInputAdapter {
@@ -41,6 +42,7 @@ public class DragPanel extends JPanel {
                     (int)(currentPt.getX() - prevPt.getX()) ,
                     (int)(currentPt.getY() - prevPt.getY())
                 );
+            // imageCorner.setLocation((int)currentPt.getX(), (int)currentPt.getY());
             prevPt = currentPt;
             repaint();    
         }
