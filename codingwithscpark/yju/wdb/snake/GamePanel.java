@@ -73,12 +73,19 @@ public class GamePanel extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
     }
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    // @Override
+    // public void paintComponent(Graphics g) {
+    //     super.paintComponent(g);
+    //     draw(g);
+
+    // }
+
+     @Override
+    public void paint(Graphics g) {
+        super.paint(g);
         draw(g);
 
-    }
+    }   
 
     public void draw(Graphics g) {
         if (running) {
