@@ -24,7 +24,7 @@ public class Frame4KeyListener extends JFrame implements KeyListener  {
         getContentPane().setBackground(Color.black);
         add(label);
 
-        setVisible(true);
+        setVisible(true); 
 
     }
 

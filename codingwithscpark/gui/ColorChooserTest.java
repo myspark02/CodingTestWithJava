@@ -87,6 +87,7 @@ public class ColorChooserTest extends JFrame implements ChangeListener, ActionLi
 
         public MyDrawingPanel() {
             this.addMouseMotionListener(this);
+        
         }
 
         @Override
