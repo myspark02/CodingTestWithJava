@@ -19,13 +19,13 @@ public class Ball extends Rectangle {
         if (randomXDirection == 0) {
             randomXDirection--;
         }
-        setXDirection(randomXDirection*initialSpeed);
+        setXDirection(randomXDirection * initialSpeed);
 
         int randomYDirection = random.nextInt(2);
         if (randomYDirection == 0) {
             randomYDirection--;
         }
-        setYDirection(randomYDirection*initialSpeed);
+        setYDirection(randomYDirection * initialSpeed);
     }
 
     public void setXDirection(int randomXDirection) {
@@ -37,6 +37,8 @@ public class Ball extends Rectangle {
     }
 
     public void move() {
+        // System.out.println("ball : xVelocity[" + xVelocity + "], yVelocity[" +
+        // yVelocity + "]");
         x += xVelocity;
         y += yVelocity;
     }
@@ -45,5 +47,5 @@ public class Ball extends Rectangle {
         g.setColor(Color.white);
         g.fillOval(x, y, width, height);
     }
-    
+
 }

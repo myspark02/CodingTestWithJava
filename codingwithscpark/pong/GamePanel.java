@@ -5,10 +5,9 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-
 public class GamePanel extends JPanel implements Runnable {
     static final int GAME_WIDTH = 1000;
-    static final int GAME_HEIGHT = (int)(GAME_WIDTH * (5/9.0));
+    static final int GAME_HEIGHT = (int) (GAME_WIDTH * (5 / 9.0));
     static final Dimension SCREEN_SIZE = new Dimension(GAME_WIDTH, GAME_HEIGHT);
     static final int BALL_DIAMETER = 20;
     static final int PADDLE_WIDTH = 25;
@@ -37,13 +36,16 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void newBall() {
         random = new Random();
-        // ball = new Ball(((GAME_WIDTH/2)-(BALL_DIAMETER/2)), ((GAME_HEIGHT/2)-(BALL_DIAMETER/2)), BALL_DIAMETER, BALL_DIAMETER);
-        ball = new Ball(((GAME_WIDTH/2)-(BALL_DIAMETER/2)), random.nextInt(GAME_HEIGHT-BALL_DIAMETER), BALL_DIAMETER, BALL_DIAMETER);
+        // ball = new Ball(((GAME_WIDTH/2)-(BALL_DIAMETER/2)),
+        // ((GAME_HEIGHT/2)-(BALL_DIAMETER/2)), BALL_DIAMETER, BALL_DIAMETER);
+        ball = new Ball(((GAME_WIDTH / 2) - (BALL_DIAMETER / 2)), random.nextInt(GAME_HEIGHT - BALL_DIAMETER),
+                BALL_DIAMETER, BALL_DIAMETER);
     }
 
     public void newPaddles() {
-        paddle1 = new GamePaddle(0, (GAME_HEIGHT/2) - (PADDLE_HEIGHT/2), PADDLE_WIDTH, PADDLE_HEIGHT, 1);
-        paddle2 = new GamePaddle(GAME_WIDTH-PADDLE_WIDTH, (GAME_HEIGHT/2) - (PADDLE_HEIGHT/2), PADDLE_WIDTH, PADDLE_HEIGHT, 2);
+        paddle1 = new GamePaddle(0, (GAME_HEIGHT / 2) - (PADDLE_HEIGHT / 2), PADDLE_WIDTH, PADDLE_HEIGHT, 1);
+        paddle2 = new GamePaddle(GAME_WIDTH - PADDLE_WIDTH, (GAME_HEIGHT / 2) - (PADDLE_HEIGHT / 2), PADDLE_WIDTH,
+                PADDLE_HEIGHT, 2);
     }
 
     public void paint(Graphics g) {
@@ -52,7 +54,8 @@ public class GamePanel extends JPanel implements Runnable {
         draw(graphics);
         // draw(g);
         g.drawImage(image, 0, 0, this);
-;    }
+        ;
+    }
 
     public void draw(Graphics g) {
         paddle1.draw(g);
@@ -84,19 +87,25 @@ public class GamePanel extends JPanel implements Runnable {
                 ball.xVelocity *= -1;
             }
 
-            if (ball.yVelocity > 0) 
-                ball.yVelocity++ ; // optional for more difficulty
-            else 
+            if (ball.yVelocity > 0)
+                ball.yVelocity++; // optional for more difficulty
+            else
                 ball.yVelocity--;
+
+            System.out.println("ball : xVelocity[" + ball.xVelocity + "], yVelocity[" + ball.yVelocity + "]");
             ball.setXDirection(ball.xVelocity);
             ball.setYDirection(ball.yVelocity);
         }
         // stops paddles at window edges
-        if (paddle1.y <= 0) paddle1.y = 0;
-        else if (paddle1.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) paddle1.y = GAME_HEIGHT - PADDLE_HEIGHT;
+        if (paddle1.y <= 0)
+            paddle1.y = 0;
+        else if (paddle1.y >= (GAME_HEIGHT - PADDLE_HEIGHT))
+            paddle1.y = GAME_HEIGHT - PADDLE_HEIGHT;
 
-        if (paddle2.y <= 0) paddle2.y = 0;
-        else if (paddle2.y >= (GAME_HEIGHT-PADDLE_HEIGHT)) paddle2.y = GAME_HEIGHT - PADDLE_HEIGHT;
+        if (paddle2.y <= 0)
+            paddle2.y = 0;
+        else if (paddle2.y >= (GAME_HEIGHT - PADDLE_HEIGHT))
+            paddle2.y = GAME_HEIGHT - PADDLE_HEIGHT;
 
         // give a player 1 point and creates new paddles & ball
         if (ball.x <= 0 || ball.x >= GAME_WIDTH - BALL_DIAMETER) {
@@ -109,7 +118,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
             newPaddles();
             newBall();
-            
+
         }
 
     }
@@ -120,8 +129,8 @@ public class GamePanel extends JPanel implements Runnable {
         double amountOfTicks = 60;
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
-        
-        while(true) {
+
+        while (true) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
@@ -131,24 +140,28 @@ public class GamePanel extends JPanel implements Runnable {
                 move();
                 checkCollision();
                 repaint();
+                // try {
+                // Thread.currentThread().sleep(10);
+                // } catch (Exception e) {
+                // }
                 delta--;
                 // System.out.println("TEST");
             }
         }
         // while(true) {
-        //     try {
-        //         Thread.sleep(10);
-        //     } catch(Exception e){}    
-        //     move();ssssww
-        //     checkCollision();
-        //     repaint();
+        // try {
+        // Thread.sleep(10);
+        // } catch(Exception e){}
+        // move();ssssww
+        // checkCollision();
+        // repaint();
         // }
     }
 
     public class MyActionListener extends KeyAdapter {
 
         @Override
-        public void keyPressed(KeyEvent e) {  
+        public void keyPressed(KeyEvent e) {
             paddle1.keyPressed(e);
             paddle2.keyPressed(e);
         }
