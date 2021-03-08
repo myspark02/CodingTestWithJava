@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PriorityQueueTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.collection.PriorityQueueTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ComboBoxDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.graphics2d.ComboBoxDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MyList",
+            "request": "launch",
+            "mainClass": "codingwithscpark.generic.MyList",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch AnimationBasic",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.AnimationBasic",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
             "name": "Launch FileLoggingTest",
             "request": "launch",
             "mainClass": "codingwithscpark.yju.exception.FileLoggingTest",

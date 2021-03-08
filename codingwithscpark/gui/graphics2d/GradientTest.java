@@ -23,7 +23,7 @@ class ShapesGradientPanel extends ShapesPanel {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
-
+      
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setStroke(new BasicStroke(3));
         GradientPaint gp = new GradientPaint(0, 10, Color.WHITE, 0, 70, Color.RED);
