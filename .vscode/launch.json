@@ -6,6 +6,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ThreadControl",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.ThreadControl",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch CarGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.CarGame",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadExecutor",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.ThreadExecutor",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
             "name": "Launch PriorityQueueTest",
             "request": "launch",
             "mainClass": "codingwithscpark.collection.PriorityQueueTest",
