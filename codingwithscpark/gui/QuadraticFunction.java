@@ -3,11 +3,12 @@ package codingwithscpark.gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.*;
 
 public class QuadraticFunction extends JPanel implements ActionListener{
 
     private JTextField aField, bField, cField;
-    private double aCE = -1.0, bCE=-5.0, cCE=6.0; // coefficient of x², x, and a constant
+    private double aCE = 1.0, bCE=-5.0, cCE=6.0; // coefficient of x², x, and a constant
 
 
     public QuadraticFunction() {
@@ -22,22 +23,24 @@ public class QuadraticFunction extends JPanel implements ActionListener{
         JButton drawButton = new JButton("Draw");
         this.add(drawButton);
         drawButton.addActionListener(this);
-       repaint();
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
-        g2.drawLine(0, 200, 400, 200);
-        g2.drawLine(200, 0, 200, 400);
-
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.drawLine(100, 200, 500, 200);
+        g2.drawLine(300, 0, 300, 400);
+      
         g2.setPaint(Color.red);
         System.out.println("!aCE:"+aCE+" bCE:"+bCE+ " cCE:" + cCE);
         for (int i = -20; i < 20; i++) {
             int x = i;
             int y = (int) (aCE * x * x -bCE * x + cCE);
-            g2.fillOval(200+x, 200 - y, 4, 4);
+            Shape s = new Ellipse2D.Float(300+x-2, 200-y+2, 4, 4);
+           // g2.fillOval(300+x-2, 200 - y + 2, 4, 4);
+           g2.fill(s);
         }
     }
     @Override
@@ -54,7 +57,7 @@ public class QuadraticFunction extends JPanel implements ActionListener{
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new QuadraticFunction());
-        frame.setSize(500, 400);
+        frame.setSize(600, 400);
         frame.setVisible(true);
     }
     

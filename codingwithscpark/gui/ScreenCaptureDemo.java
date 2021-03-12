@@ -25,6 +25,7 @@ public class ScreenCaptureDemo implements ActionListener {
         captureFrame.add(btnCapture, BorderLayout.SOUTH);
         panel = new CapturePanel();
         captureFrame.getContentPane().add(panel, BorderLayout.CENTER);
+        // captureFrame.add(panel, BorderLayout.CENTER);
         captureFrame.setVisible(true);
     }
 
