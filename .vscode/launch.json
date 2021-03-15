@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch EnumDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.enumtest.EnumDemo",
+            "projectName": "CodingTestJava_c8b2e7ff"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamsDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.streams.StreamsDemo",
+            "projectName": "CodingTestJava_c8b2e7ff"
+        },
+        {
+            "type": "java",
             "name": "Launch Buffer",
             "request": "launch",
             "mainClass": "codingwithscpark.yju.thread.Buffer",
