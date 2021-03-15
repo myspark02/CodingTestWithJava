@@ -13,7 +13,7 @@ public class PapagoDemo extends JFrame implements ActionListener {
     private JTextArea textIn;
     private JTextArea textOut;
     private final String CLIENT_ID = "Lmg8_wqtNOA7uP3_JxFJ";
-    private final String CLIENT_SECRET = "";
+    private final String CLIENT_SECRET = "Ik9v4Y1iiu";
     private String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
     private String text;
     private Map<String, String> requestHeaders = new HashMap<>();
