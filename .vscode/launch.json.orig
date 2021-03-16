@@ -1,0 +1,694 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+<<<<<<< HEAD
+            "name": "Launch ShootingGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.ShootingGame",
+            "projectName": "Java_f484955"
+=======
+            "name": "Launch EnumDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.enumtest.EnumDemo",
+            "projectName": "CodingTestJava_c8b2e7ff"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamsDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.streams.StreamsDemo",
+            "projectName": "CodingTestJava_c8b2e7ff"
+>>>>>>> 8be05e651942463232b2c27331e09d298c22b6d3
+        },
+        {
+            "type": "java",
+            "name": "Launch Buffer",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.Buffer",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch PapagoDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.PapagoDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch FileChooserDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.FileChooserDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadControl",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.ThreadControl",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch CarGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.CarGame",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadExecutor",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.ThreadExecutor",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch PriorityQueueTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.collection.PriorityQueueTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ComboBoxDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.graphics2d.ComboBoxDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MyList",
+            "request": "launch",
+            "mainClass": "codingwithscpark.generic.MyList",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch AnimationBasic",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.AnimationBasic",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch FileLoggingTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.exception.FileLoggingTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch InfoOlympiad",
+            "request": "launch",
+            "mainClass": "codingtest.InfoOlympiad",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "codingtest.Main",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainV2",
+            "request": "launch",
+            "mainClass": "codingtest.MainV2",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ProgrammersLevelTwoPageOne",
+            "request": "launch",
+            "mainClass": "codingtest.ProgrammersLevelTwoPageOne",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch EnumExamples",
+            "request": "launch",
+            "mainClass": "codingtest.test.EnumExamples",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch JavaStreams",
+            "request": "launch",
+            "mainClass": "codingtest.test.JavaStreams",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch LamdaExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.LamdaExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch LamdaExample2",
+            "request": "launch",
+            "mainClass": "codingtest.test.LamdaExample2",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch LamdaExample3",
+            "request": "launch",
+            "mainClass": "codingtest.test.LamdaExample3",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Practice",
+            "request": "launch",
+            "mainClass": "codingtest.test.Practice",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch PracticeLoop",
+            "request": "launch",
+            "mainClass": "codingtest.test.PracticeLoop",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamExamples",
+            "request": "launch",
+            "mainClass": "codingtest.test.StreamExamples",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamExamples2",
+            "request": "launch",
+            "mainClass": "codingtest.test.StreamExamples2",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamExamples3",
+            "request": "launch",
+            "mainClass": "codingtest.test.StreamExamples3",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamExamples4",
+            "request": "launch",
+            "mainClass": "codingtest.test.StreamExamples4",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamExamples5",
+            "request": "launch",
+            "mainClass": "codingtest.test.StreamExamples5",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StreamExamples6",
+            "request": "launch",
+            "mainClass": "codingtest.test.StreamExamples6",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch TryWithResourcesExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.TryWithResourcesExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch IterableExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.iterable.IterableExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch SwitchExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.javaswitch.SwitchExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch QueueExamples",
+            "request": "launch",
+            "mainClass": "codingtest.test.queue.QueueExamples",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch SetExamples",
+            "request": "launch",
+            "mainClass": "codingtest.test.set.SetExamples",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StackExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.stack.StackExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StackExample2",
+            "request": "launch",
+            "mainClass": "codingtest.test.stack.StackExample2",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch StackExample3",
+            "request": "launch",
+            "mainClass": "codingtest.test.stack.StackExample3",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch InheritableThreadLocalBasicExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.threadlocal.InheritableThreadLocalBasicExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadLocalBasicExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.threadlocal.ThreadLocalBasicExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadLocalInitialValueExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.threadlocal.ThreadLocalInitialValueExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadLocalLazyInitExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.threadlocal.ThreadLocalLazyInitExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadLocalRemoveExample",
+            "request": "launch",
+            "mainClass": "codingtest.test.threadlocal.ThreadLocalRemoveExample",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ThreadPoolMain",
+            "request": "launch",
+            "mainClass": "codingtest.test.threadpool.ThreadPoolMain",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch BezierCurve",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.BezierCurve",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch CheckBoxDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.CheckBoxDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ColorChooserTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.ColorChooserTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ComboBoxDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.ComboBoxDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Fractal",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Fractal",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Frame4Drawing",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Frame4Drawing",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch GrayScaleImage",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.GrayScaleImage",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ImageDivideTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.ImageDivideTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(1)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main2",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main2",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4Animation",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4Animation",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4BorderLayout",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4BorderLayout",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4DragListener",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4DragListener",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4FlowLayout",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4FlowLayout",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4GridLayout",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4GridLayout",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JCheckBox",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JCheckBox",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JColorChooser",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JColorChooser",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JComboBox",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JComboBox",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JFileChooser",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JFileChooser",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JLayeredPane",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JLayeredPane",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JMenuBar",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JMenuBar",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JOptionPane",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JOptionPane",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JProgressBar",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JProgressBar",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JRadioButton",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JRadioButton",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JSlider",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JSlider",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4JTextField",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4JTextField",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4KeyBinding",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4KeyBinding",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4KeyListener",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4KeyListener",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4MouseListener",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4MouseListener",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main4NewWindow",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.Main4NewWindow",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MainJButton",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.MainJButton",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MiniPingPongGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.MiniPingPongGame",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MouseEventTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.MouseEventTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch PizzaOrderDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.PizzaOrderDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch QuadraticFunction",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.QuadraticFunction",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch ScreenCaptureDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.ScreenCaptureDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch SliderDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.SliderDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch TextAreaDemo",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.TextAreaDemo",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch TextConverter",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.TextConverter",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch GradientTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.graphics2d.GradientTest",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch MoreShapes",
+            "request": "launch",
+            "mainClass": "codingwithscpark.gui.graphics2d.MoreShapes",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(2)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.guizgame.Main",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(3)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.polymorphism.Main",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main2(1)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.polymorphism.Main2",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch PongGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.pong.PongGame",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Calculator",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.Calculator",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch AssertionTest",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.exception.AssertionTest",
+            "projectName": "Java_f484955",
+            "vmArgs": "-enableassertions"
+        },
+        {
+            "type": "java",
+            "name": "Launch Test",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.exception.Test",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(4)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.interfacetutorial.Main",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(5)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.login.Main",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch SnakeGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.wdb.snake.SnakeGame",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
+            "name": "Launch Main(6)",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.wdb.tictactoe.Main",
+            "projectName": "Java_f484955"
+        }
+    ]
+}
