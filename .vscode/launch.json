@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ShootingGame",
+            "request": "launch",
+            "mainClass": "codingwithscpark.yju.thread.ShootingGame",
+            "projectName": "Java_f484955"
+        },
+        {
+            "type": "java",
             "name": "Launch Buffer",
             "request": "launch",
             "mainClass": "codingwithscpark.yju.thread.Buffer",
