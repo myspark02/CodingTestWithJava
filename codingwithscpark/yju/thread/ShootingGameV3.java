@@ -165,33 +165,35 @@ class MissileV3 extends GraphicObjectV3 implements Runnable {
     }
 
     public boolean checkCollision()  {
-        synchronized(lock)  {
-            boolean collision = false;
-            Rectangle meR = new Rectangle(x, y, img.getWidth(), img.getHeight());
-            for (int i = 0; i < ShootingGamePanelV3.enemies.size(); i++) {
-                EnemyV3 enemy = ShootingGamePanelV3.enemies.peek();
-                Rectangle enemyR = new Rectangle(enemy.x, enemy.y, enemy.getWidth(), enemy.getHeight());
-                if (enemyR.intersects(meR)) {
-                    // System.out.println("Missile shot down an enemy...");
-
+    
+        boolean collision = false;
+        Rectangle meR = new Rectangle(x, y, img.getWidth(), img.getHeight());
+        for (int i = 0; i < ShootingGamePanelV3.enemies.size(); i++) {
+            EnemyV3 enemy = ShootingGamePanelV3.enemies.peek();
+            Rectangle enemyR = new Rectangle(enemy.x, enemy.y, enemy.getWidth(), enemy.getHeight());
+            if (enemyR.intersects(meR)) {
+                // System.out.println("Missile shot down an enemy...");
+                synchronized(lock)  {
                     ShootingGameV3.score++;
-                    collision = true;
-                    enemy.explode();
-                    ShootingGamePanelV3.enemies.remove(enemy);
-                    System.out.println("Remaining enemies:" + ShootingGamePanelV3.enemies.size());
-                    exploded = true;
                 }
+                collision = true;
+                enemy.explode();
+                ShootingGamePanelV3.enemies.remove(enemy);
+                System.out.println("Remaining enemies:" + ShootingGamePanelV3.enemies.size());
+                exploded = true;
+                break;
             }
-        
-            
-            if (ShootingGamePanelV3.enemies.size() == 0) {
-                ShootingGameV3.started = false;
-                System.out.println("\nAll enemies are destroyed...");
-                System.out.println("Shot down " + ShootingGameV3.score + " enemies");
-                System.out.println("To start again press 'R' \n");
-            } 
-            return collision;
         }
+    
+        
+        if (ShootingGamePanelV3.enemies.size() == 0) {
+            ShootingGameV3.started = false;
+            System.out.println("\nAll enemies are destroyed...");
+            System.out.println("Shot down " + ShootingGameV3.score + " enemies");
+            System.out.println("To start again press 'R' \n");
+        } 
+        return collision;
+      
     }
 
     public void run() {
@@ -210,8 +212,8 @@ class MissileV3 extends GraphicObjectV3 implements Runnable {
 }
 
 class EnemyV3 extends GraphicObjectV3 implements Runnable {
-    private int dx = -10;
-    private int dy = 10;
+    private int dx = -1*(int)(Math.random()*10);
+    private int dy = (int)(Math.random()*10);
     protected boolean exploded = false;
     public EnemyV3(String name) {
         super(name);
