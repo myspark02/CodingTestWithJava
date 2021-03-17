@@ -7,50 +7,49 @@ import javax.imageio.ImageIO;
 import java.io.*;
 import javax.swing.*;
 
-public class ShootingGame extends JFrame {
-    public ShootingGame() {
+public class ShootingGameV2 extends JFrame {
+    private ShootingGamePanelV2 gamePanel;
+    public ShootingGameV2() {
         this.setTitle("Shooting Game");
-        this.add(new ShootingGamePanel());
+        gamePanel = new ShootingGamePanelV2();
+        this.add(gamePanel);
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
         this.setVisible(true);
     }
+
+    public void startGame() {
+        while(true) {
+            gamePanel.enemy.update();
+            gamePanel.spaceShip.update();
+            gamePanel.missile.update();
+            gamePanel.repaint();
+            try {
+                Thread.sleep(50);
+            }catch(InterruptedException e) {}
+        }
+    }
+
     public static void main(String[] args) {
-        new ShootingGame();
+        ShootingGameV2 sg =  new ShootingGameV2();
+        sg.startGame();
     }
 }
 
-class ShootingGamePanel  extends JPanel implements KeyListener{
-    private Enemy enemy;
-    private SpaceShip spaceShip;
-    private Missile missile;
+class ShootingGamePanelV2  extends JPanel implements KeyListener{
+    protected EnemyV2 enemy;
+    protected SpaceShipV2 spaceShip;
+    protected MissileV2 missile;
 
-    public ShootingGamePanel() {
+    public ShootingGamePanelV2() {
         this.addKeyListener(this);
         this.requestFocusInWindow();
         this.setFocusable(true);
 
-        enemy = new Enemy("enemy.png");
-        spaceShip = new SpaceShip("spaceship.png");
-        missile = new Missile("missile.png");
-
-        class MyThread extends Thread {
-            public void run() {
-                while(true) {
-                    enemy.update();
-                    spaceShip.update();
-                    missile.update();
-                    repaint();
-                    try {
-                        Thread.sleep(50);
-                    }catch(InterruptedException e) {}
-                }
-            }
-        }
-
-        Thread t = new MyThread();
-        t.start();
+        enemy = new EnemyV2("enemy.png");
+        spaceShip = new SpaceShipV2("spaceship.png");
+        missile = new MissileV2("missile.png");
     }
 
     public void paint(Graphics g) {
@@ -76,11 +75,11 @@ class ShootingGamePanel  extends JPanel implements KeyListener{
 
 
 
-class GraphicObject {
+class GraphicObjectV2 {
     private BufferedImage img = null;
     protected int x = 0, y = 0;
 
-    public GraphicObject(String name) {
+    public GraphicObjectV2(String name) {
         try {
             img = ImageIO.read(new File(name));
         }catch(IOException e) {
@@ -98,10 +97,10 @@ class GraphicObject {
     public void keyPressed(KeyEvent event) { }
 }
 
-class Missile extends GraphicObject {
+class MissileV2 extends GraphicObjectV2 {
     private boolean launched = false;
 
-    public Missile(String name) {
+    public MissileV2(String name) {
         super(name);
         y = -200;
     }
@@ -121,10 +120,10 @@ class Missile extends GraphicObject {
     }
 }
 
-class Enemy extends GraphicObject {
+class EnemyV2 extends GraphicObjectV2 {
     private int dx = -10;
 
-    public Enemy(String name) {
+    public EnemyV2(String name) {
         super(name);
         x = 500;
         y = 0;
@@ -138,9 +137,9 @@ class Enemy extends GraphicObject {
     }
 }
 
-class SpaceShip extends GraphicObject {
+class SpaceShipV2 extends GraphicObjectV2 {
 
-    public SpaceShip(String name) {
+    public SpaceShipV2(String name) {
         super(name);
         x = 150;
         y = 350;
