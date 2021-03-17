@@ -159,7 +159,6 @@ class MissileV4 extends GraphicObjectV4 implements Runnable {
     
     public MissileV4(String name) {
         super(name);
-        y = -200;
     }
 
 
