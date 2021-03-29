@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2021-03-03T05:03:05.188617Z</date>
-  <millis>1614747785188</millis>
-  <nanos>617000</nanos>
+  <date>2021-03-19T00:43:27.774463Z</date>
+  <millis>1616114607774</millis>
+  <nanos>463000</nanos>
   <sequence>0</sequence>
   <logger>codingwithscpark.yju.exception.FileLoggingTest</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>info 레벨 메시지</message>
 </record>
 <record>
-  <date>2021-03-03T05:03:05.257760Z</date>
-  <millis>1614747785257</millis>
-  <nanos>760000</nanos>
+  <date>2021-03-19T00:43:27.870775Z</date>
+  <millis>1616114607870</millis>
+  <nanos>775000</nanos>
   <sequence>1</sequence>
   <logger>codingwithscpark.yju.exception.FileLoggingTest</logger>
   <level>WARNING</level>

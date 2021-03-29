@@ -18,6 +18,7 @@ public class Test {
         byte[] buf = new byte[100];
         System.out.println("문자열을 입력하시오.");
         System.in.read(buf);
+        Error e = new Error();
         return new String(buf);
     }
     
