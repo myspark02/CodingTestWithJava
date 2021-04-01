@@ -1,0 +1,4 @@
+driverClassName=com.mysql.cj.jdbc.Driver
+Url=jdbc:mysql://localhost:3706/oop
+userName=root
+userPassword=mysql!
