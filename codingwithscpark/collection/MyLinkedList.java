@@ -40,11 +40,51 @@ public class MyLinkedList<T> {
         return tmp;
     }
 
+    public void remove(int index) {
+        Node<T> tmp = traverse(index);
+        if (tmp != null) {
+            if (tmp != head) {
+                tmp.prev.next = tmp.next;
+                tmp.prev = null;
+                tmp.next = null;
+            } else { // head remove
+                head = head.next;
+                if (head.next != null) {
+                    head.next.prev = null;
+                }
+            }
+            size--;
+        }
+    }
+
+    public void remove() {
+        if (tail != null) {
+            Node<T> tmp = tail;
+            tail = tail.prev;
+            tmp.prev = null;
+            if (tail != null) tail.next = null;
+            
+            size--;
+        }
+    }
+
+    public T getFirst() {
+            if (head == null) return null;
+            return head.value;
+    }
+
+    public T getLast() {
+        if (tail == null) return null;
+        return tail.value;
+    }
+
     public void add(int index, T value) {
         Node<T> tmp = traverse(index-1);
+
+        Node<T> newNode = new Node<>();
+        newNode.value = value;
+
         if (tmp != head) {
-            Node<T> newNode = new Node<>();
-            newNode.value = value;
 
             tmp.prev.next = newNode;
             
@@ -53,7 +93,9 @@ public class MyLinkedList<T> {
 
             tmp.prev = newNode;
         } else {
-
+            newNode.next = head;
+            head.prev = newNode;
+            head = newNode;
         }
 
         size++;
@@ -84,9 +126,24 @@ public class MyLinkedList<T> {
 
         list.add(4, 100);
 
+        list.add(0, 200);
+        list.add(0, 300);
+        list.add(0, 400);
+        list.add(0, 500);
+
         for (int i = 0; i < list.size(); i++) {
             System.out.println(list.get(i));
         }
-   
+
+        list.remove(0);
+        list.remove(0);
+        list.remove(2);
+
+        list.remove();
+        list.remove();
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+        System.out.println();
     }
 }
