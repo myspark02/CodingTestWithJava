@@ -5,39 +5,39 @@ public class Buffer {
     private boolean empty = true;
 
     public synchronized int get() {
-        while(empty) {
+        while (empty) {
             try {
                 wait();
-            }catch(InterruptedException e) {
+            } catch (InterruptedException e) {
                 System.out.println("[get]interrupted wait");
             }
         }
         empty = true;
         notifyAll();
-        System.out.println("소비자["+Thread.currentThread().getName()+"]: " + data + "번째 케익을  소비하였습니다.") ;
+        System.out.println("소비자[" + Thread.currentThread().getName() + "]: " + data + "번째 케익을  소비하였습니다.");
         return data;
     }
 
     public synchronized void put(int data) {
-        while(!empty) {
+        while (!empty) {
             try {
                 wait();
-            } catch(InterruptedException e) {
+            } catch (InterruptedException e) {
                 System.out.println("[put] interrupted wait");
             }
         }
         empty = false;
         this.data = data;
-        System.out.println("생산자 ["+Thread.currentThread().getName()+"]: " + data + "번째 케익을  생산하였습니다.") ;
-        notifyAll(); 
+        System.out.println("생산자 [" + Thread.currentThread().getName() + "]: " + data + "번째 케익을  생산하였습니다.");
+        notifyAll();
     }
 
     // public synchronized int get() {
-    //     return data;
+    // return data;
     // }
 
     // public synchronized void put(int data) {
-    //     this.data = data;
+    // this.data = data;
     // }
 
     public static void main(String[] args) {
@@ -51,10 +51,10 @@ public class Buffer {
     }
 }
 
-class Producer implements Runnable{
+class Producer implements Runnable {
     private Buffer buffer;
     private int id;
-    
+
     public Producer(Buffer buffer, int id) {
         this.buffer = buffer;
         this.id = id;
@@ -67,8 +67,8 @@ class Producer implements Runnable{
             buffer.put(i);
             // System.out.println("생산자["+id+"]: " + i + "번째 케익을 생산하였습니다.") ;
             try {
-                Thread.sleep((int)(Math.random() * 100));
-            } catch(InterruptedException e) {
+                Thread.sleep((int) (Math.random() * 100));
+            } catch (InterruptedException e) {
                 System.out.println("[producer] interrupted sleep");
             }
         }
@@ -77,7 +77,7 @@ class Producer implements Runnable{
 
 class Consumer implements Runnable {
     private Buffer buffer;
-    private int id ;
+    private int id;
 
     public Consumer(Buffer buffer, int id) {
         this.buffer = buffer;
@@ -88,13 +88,12 @@ class Consumer implements Runnable {
     public void run() {
         for (int i = 0; i < 10; i++) {
             int data = buffer.get();
-            // System.out.println("소비자["+id+"]: " + data + "번째 케익을  소비하였습니다.") ;
+            // System.out.println("소비자["+id+"]: " + data + "번째 케익을 소비하였습니다.") ;
             try {
-                Thread.sleep((int)(Math.random() * 100));
-            } catch(InterruptedException e) {
+                Thread.sleep((int) (Math.random() * 100));
+            } catch (InterruptedException e) {
                 System.out.println("[consumer] interrupted sleep");
             }
         }
     }
 }
-
