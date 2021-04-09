@@ -4,7 +4,7 @@ import java.util.*;
 
 public class PriorityQueueTest {
     public static void main(String[] args) {
-        MyComparator<Integer> comparator = new MyComparator<>();
+        MyComparator comparator = new MyComparator();
         PriorityQueue<Integer> pqueue = new PriorityQueue<>(comparator);
         pqueue.add(30);
         pqueue.add(80);
@@ -20,12 +20,9 @@ public class PriorityQueueTest {
         PriorityQueueTest test = new PriorityQueueTest();
         System.out.println(test.hashCode());
     }
-
-
-
 }
 
-class MyComparator<Integer> implements Comparator<Integer>{
+class MyComparator implements Comparator<Integer>{
 
     @Override
     public int compare(Integer o1, Integer o2) {
