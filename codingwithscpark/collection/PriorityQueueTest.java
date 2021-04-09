@@ -10,12 +10,14 @@ public class PriorityQueueTest {
         pqueue.add(80);
         pqueue.add(20);
 
-        for (int n : pqueue) System.out.println(n);
+        for (int n : pqueue)
+            System.out.println(n);
 
         System.out.println("원소 삭제");
         System.out.println(pqueue.comparator());
-        
-        while(!pqueue.isEmpty()) System.out.println(pqueue.remove());
+
+        while (!pqueue.isEmpty())
+            System.out.println(pqueue.remove());
 
         PriorityQueueTest test = new PriorityQueueTest();
         System.out.println(test.hashCode());
@@ -23,11 +25,10 @@ public class PriorityQueueTest {
 }
 
 class MyComparator implements Comparator<Integer>{
-
     @Override
     public int compare(Integer o1, Integer o2) {
         // TODO Auto-generated method stub
-        int result = (int)o2 - (int)o1;
+        int result = (int) o2 - (int) o1;
         return result;
     }
 
