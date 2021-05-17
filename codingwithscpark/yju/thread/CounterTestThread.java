@@ -12,13 +12,13 @@ public class CounterTestThread extends Thread {
         while (i < 20000) {
             counter.inc();
             counter.desc();
-            if (i % 40 == 0) {
-                counter.print();
-            }
-            try {
-                Thread.sleep((int) (Math.random() * 2));
-            } catch (InterruptedException e) {
-            }
+            // if (i % 40 == 0) {
+            //     counter.print();
+            // }
+            // try {
+            //     Thread.sleep((int) (Math.random() * 2));
+            // } catch (InterruptedException e) {
+            // }
             i++;
         }
     }
@@ -47,7 +47,6 @@ public class CounterTestThread extends Thread {
 
 class Counter {
     private int value = 0;
-
     public int getValue() {
         return value;
     }
