@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+
 
 public class TableViewer extends JFrame implements ActionListener {
     private JTextField idField, titleField, publisherField, yearField, priceField, authorField;
@@ -57,10 +59,6 @@ public class TableViewer extends JFrame implements ActionListener {
         priceField = new JTextField();
         this.add(priceField);
 
-        // this.add(new JLabel("저자검색", JLabel.CENTER));
-        // authorField = new JTextField();
-        // this.add(authorField);
-
         previousBtn = new JButton("Previoues");
         previousBtn.addActionListener(this);
 
@@ -70,7 +68,17 @@ public class TableViewer extends JFrame implements ActionListener {
         this.add(nextBtn);
         this.add(previousBtn);
 
-        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        insertBtn = new JButton("삽입");
+        this.add(insertBtn);
+        insertBtn.addActionListener(this);
+
+        finishBtn = new JButton("종료");
+        this.add(finishBtn);
+        finishBtn.addActionListener(this);
+
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         // this.addWindowListener(new WindowAdapter() {
         //     @Override
         //     public void windowClosing(WindowEvent event) {
@@ -109,29 +117,59 @@ public class TableViewer extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         try {
-            if (e.getSource() == nextBtn) {
-                rs.next();
-            } else if(e.getSource() == previousBtn){
-                rs.previous();
+            if (e.getSource() == nextBtn || e.getSource() == previousBtn) {
+                if (e.getSource() == nextBtn) {
+                    rs.next();
+                } else if(e.getSource() == previousBtn){
+                    rs.previous();
+                }
+
+                int bookId = rs.getInt("book_id");
+                idField.setText(String.valueOf(bookId));
+
+                String title = rs.getString("title");
+                titleField.setText(title);
+
+                String publisher = rs.getString("publisher");
+                publisherField.setText(publisher);
+
+                Date date = rs.getDate("year");
+                yearField.setText(String.valueOf(date));
+
+                int price = rs.getInt("price");
+                priceField.setText(String.valueOf(price));
+            }  else if (e.getSource() == insertBtn) {
+    
+                String title = titleField.getText();
+                String publisher = publisherField.getText();
+                String year = yearField.getText();
+                String price = priceField.getText();
+
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = new Date(sdf.parse(year).getTime()); // java.util.Date 객체로부터 java.sql.Date 객체 생성
+
+                String sql = "insert into books(title, publisher, year, price) values(?, ?, ?, ?)";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+
+                pstmt.setString(1, title);
+                pstmt.setString(2, publisher);
+                pstmt.setDate(3, date);
+                pstmt.setInt(4, Integer.parseInt(price));
+                
+                pstmt.executeUpdate();
+                JOptionPane.showMessageDialog(this, "책 등록 성공", "성공", JOptionPane.INFORMATION_MESSAGE);
+
+            }  else {
+                System.out.println("프로그램을 종료합니다.");
+                rs.close();
+                con.close();
+                this.dispose();
+                System.exit(0);
             }
-
-            int bookId = rs.getInt("book_id");
-            idField.setText(String.valueOf(bookId));
-
-            String title = rs.getString("title");
-            titleField.setText(title);
-
-            String publisher = rs.getString("publisher");
-            publisherField.setText(publisher);
-
-            Date date = rs.getDate("year");
-            yearField.setText(String.valueOf(date));
-
-            int price = rs.getInt("price");
-            priceField.setText(String.valueOf(price));
         } catch(Exception err) {
-            err.printStackTrace();
+                err.printStackTrace();
         }
+        
         
     }
     
