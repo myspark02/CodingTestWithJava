@@ -7,6 +7,7 @@ public class HttpURLTest {
     public static void main(String[] args) throws Exception {
         String site = "https://www.google.com/search?q=java";
         URL url = new URL(site);
+        
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         con.setRequestMethod("GET");
